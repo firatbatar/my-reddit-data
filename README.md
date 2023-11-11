@@ -1,16 +1,17 @@
 # My Reddit Usage Data Analysis
-## Sabancı University CS210 Intorduction to Data Scince Course Fall 2023-2024 Term Project
 
-This project will be an analysis on my own Reddit usage. Data used is directly exported from reddit.com as a personal data request.  
+## Description  
+Sabancı University CS210 Intorduction to Data Scince Course Fall 2023-2024 Term Project.  
+This project will be an analysis on my own [Reddit](https://www.reddit.com/) usage. Data used is directly exported from Reddit as a personal [data request](https://www.reddit.com/settings/data-request).  
 
-### Goal
+## Goal  
 I will explore the data and try to make analysis on
 * subreddits that I am subscribed to,
 * subreddits that I am active in,
 * the time of my activity,
 * types of activity
 
-### Tools
+## Tools  
 I will use Python programming language and will work on a IPython Notebook (Jupyter Notebook) file.  
 I mainly plan to use libraries
 * **Pandas** to structure the data
