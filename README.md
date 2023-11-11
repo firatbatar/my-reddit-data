@@ -2,7 +2,7 @@
 
 ## Description  
 Sabancı University CS210 Intorduction to Data Scince Course Fall 2023-2024 Term Project.  
-This project will be an analysis on my own [Reddit](https://www.reddit.com/) usage. Data used is directly exported from Reddit as a personal [data request](https://www.reddit.com/settings/data-request).  
+This project will be an analysis on my own <a href="https://www.reddit.com/" target="_blank">Reddit</a> usage. Data used is directly exported from Reddit as a personal <a href="https://www.reddit.com/settings/data-request" target="_blank">data request</a>.  
 
 ## Goal  
 I will explore the data and try to make analysis on
