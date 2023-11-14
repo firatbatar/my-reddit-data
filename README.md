@@ -15,4 +15,4 @@ I will explore the data and try to make analysis on
 I will use Python programming language and will work on a IPython Notebook (Jupyter Notebook) file.  
 I mainly plan to use libraries
 * **Pandas** to structure the data
-* **Matplotlib**, **Seaborn** (, and maybe **Atlas**) to visualse and visually analyse the data
+* **Matplotlib**, **Seaborn** (, and maybe **Altair**) to visualse and visually analyse the data
