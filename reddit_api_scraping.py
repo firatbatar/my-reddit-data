@@ -12,7 +12,7 @@ def get_reddit_client():
         client_secret=os.getenv("CLIENT_SECRET"),
         password=os.getenv("REDDIT_PASSWORD"),
         username=os.getenv("REDDIT_USERNAME"),
-        user_agent="testscript by u/personalScraper",
+        user_agent="script:myRedditDataCollecterBot:v1.0.0 by u/personalScraper",
     )
 
     return reddit  # Return the Reddit client
