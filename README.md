@@ -23,4 +23,4 @@ Data is collected in two main ways:
 * Data that is directly exported from Reddit as a personal <a href="https://www.reddit.com/settings/data-request" target="_blank">data request</a>.  
 * Data that is scrapped using <a href="https://www.reddit.com/dev/api/">Reddit API</a> through a simple Python script using <a href="https://github.com/praw-dev/praw">PRAW</a> package, following <a href="https://github.com/reddit/reddit/wiki/API">Reddit's API rules</a>.  
 
-Note that .csv files in <a href="/data/">data</a> folder are a combination of requested, scrapped and even some filtered data for the purpose of keeping API keys secret and avoiding scraping the same data every time.
+Note that .csv files in <a href="/data/" style="text-decoration: none;">data</a> folder are a combination of requested, scrapped and even some filtered data for the purpose of keeping API keys secret and avoiding scraping the same data every time.
