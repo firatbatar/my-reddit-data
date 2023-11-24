@@ -94,6 +94,35 @@ def scrape_comment_votes(reddit, file_path):
     print(f"Saved the vote counts to {file_path}")
 
 
+def get_sub_flairs(reddit, file_path):
+    import pandas as pd
+
+    # Read the csv file containing the subreddit names
+    subreddits_df = pd.read_csv(file_path)
+
+    # Add flairs column to the dataframe
+    subreddits_df["Flairs"] = None
+
+    # Get the flairs for each subreddit
+    for sub_name in subreddits_df["subreddit"]:
+        sub = reddit.subreddit(sub_name)
+        
+        try:
+            flairs = []
+            for f in sub.flair.link_templates:
+                flairs.append(f["text"])
+            flairs = ", ".join(flairs)
+        except:
+            flairs = None
+            
+        # Add the flairs to the dataframe
+        subreddits_df.loc[subreddits_df["subreddit"] == sub_name, "Flairs"] = flairs
+
+    
+    # Save the dataframe to the csv file
+    subreddits_df.to_csv(file_path, index=False)
+
+
 def main():
     import pandas as pd
 
@@ -116,6 +145,8 @@ def main():
     print("Getting vote counts for the comments that I have created...")
     scrape_comment_votes(reddit, data_path + "comment_headers.csv")
 
+    print("Getting flairs for the subreddits...")
+    get_sub_flairs(reddit, data_path + "subscribed_subreddits.csv")
 
 if __name__ == "__main__":
     main()
