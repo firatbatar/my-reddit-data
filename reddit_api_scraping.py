@@ -41,6 +41,16 @@ def get_submission_vote_count(reddit, submission_id):
     return [ceil(upvotes), ceil(downvotes)]
 
 
+def get_submission_flair(reddit, submission_id):
+    try:
+        submission = reddit.submission(id=submission_id)
+        submission_flair = submission.link_flair_text
+    except:
+        return None  # Return NaN if the submission is hidden or inaccessible for some reason
+
+    return submission_flair
+
+
 def get_comment_score(reddit, comment_id):
     from numpy import nan as np_nan
 
@@ -53,22 +63,46 @@ def get_comment_score(reddit, comment_id):
     return comment_score
 
 
-def scrape_post_votes(reddit, file_path):
-    import pandas as pd
-
-    # Read the csv file containing the submission ids for the posts that I have voted
-    post_votes = pd.read_csv(file_path)
+def scrape_post_votes(reddit, ids): 
     ups = []
     downs = []
-    for id in post_votes["id"]:
+    for id in ids:
         [up, down] = get_submission_vote_count(reddit, id)
         print(f"ID: {id} - Upvotes: {up}, Downvotes: {down}")
         ups.append(up)
         downs.append(down)
 
+    return [ups, downs]
+
+
+def scrape_post_flairs(reddit, ids): 
+    flairs = []
+    for id in ids:
+        flair = get_submission_flair(reddit, id)
+        print(f"ID: {id} - Flair: {flair}")
+        flairs.append(flair)
+    
+    return flairs
+
+
+def scrape_post_vote_and_flair(reddit, file_path):
+    import pandas as pd
+
+    # Read the csv file containing the submission ids for the posts that I have voted
+    post_votes = pd.read_csv(file_path)
+
+    # Get votes
+    print("Getting vote counts for posts that I have voted on...")
+    ups, downs = scrape_post_votes(reddit, post_votes["id"])
     # Add the upvotes and downvotes to the dataframe
     post_votes["Upvotes"] = ups
     post_votes["Downvotes"] = downs
+
+    # Get flairs
+    print("Getting flairs for posts that I have voted on...")
+    flairs = scrape_post_flairs(reddit, post_votes["id"])
+    # Add the flairs to the dataframe
+    post_votes["Flair"] = flairs
 
     # Save the dataframe to a csv file
     post_votes.to_csv(file_path, index=False)
@@ -130,17 +164,12 @@ def main():
     reddit = get_reddit_client()
     data_path = "./data/"
 
-    print("Getting vote counts for posts that I have voted on...")
-    scrape_post_votes(reddit, data_path + "post_votes.csv")
-
+    scrape_post_vote_and_flair(reddit, data_path + "post_votes.csv")
 
     print("Getting vote counts for comments that I have voted on...")
     scrape_comment_votes(reddit, data_path + "comment_votes.csv")
 
-
-    print("Getting vote counts for the posts that I have created...")
-    scrape_post_votes(reddit, data_path + "post_headers.csv")
-
+    scrape_post_vote_and_flair(reddit, data_path + "post_headers.csv")
 
     print("Getting vote counts for the comments that I have created...")
     scrape_comment_votes(reddit, data_path + "comment_headers.csv")
