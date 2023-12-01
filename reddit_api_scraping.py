@@ -44,7 +44,7 @@ def get_submission_vote_count(reddit, submission_id):
 def get_submission_flair(reddit, submission_id):
     try:
         submission = reddit.submission(id=submission_id)
-        submission_flair = submission.link_flair_text
+        submission_flair = submission.link_flair_text.lower()
     except:
         return None  # Return NaN if the submission is hidden or inaccessible for some reason
 
@@ -144,7 +144,7 @@ def get_sub_flairs(reddit, file_path):
         try:
             flairs = []
             for f in sub.flair.link_templates:
-                flairs.append(f["text"])
+                flairs.append(f["text"].lower())
             flairs = ", ".join(flairs)
         except:
             flairs = None
