@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    #vis.vega-embed {
+      width: 100%;
+      display: flex;
+    }
+
+    #vis.vega-embed details,
+    #vis.vega-embed details summary {
+      position: relative;
+    }
+  </style>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega-lite@5.15.1"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+</head>
+<body>
+  <div id="vis"></div>
+  <script>
+    (function(vegaEmbed) {
+      var spec = {"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "data": {"name": "data-c4788c7eaddbd50f8eed0f9c8ccbb646"}, "mark": {"type": "bar"}, "encoding": {"color": {"value": "#1f77b4"}, "tooltip": [{"field": "Count", "type": "quantitative"}], "x": {"axis": {"tickCount": 9.0}, "field": "Count", "type": "quantitative"}, "y": {"field": "Tag", "sort": "-x", "title": null, "type": "nominal"}}, "height": 333.33, "title": "Tags", "width": 500, "$schema": "https://vega.github.io/schema/vega-lite/v5.15.1.json", "datasets": {"data-c4788c7eaddbd50f8eed0f9c8ccbb646": [{"Tag": "information", "Count": 15}, {"Tag": "other", "Count": 11}, {"Tag": "game", "Count": 9}, {"Tag": "hobby", "Count": 7}, {"Tag": "fandom", "Count": 19}, {"Tag": "movie/show", "Count": 18}, {"Tag": "meme", "Count": 16}, {"Tag": "programming", "Count": 9}]}};
+      var embedOpt = {"mode": "vega-lite"};
+
+      function showError(el, error){
+          el.innerHTML = ('<div style="color:red;">'
+                          + '<p>JavaScript Error: ' + error.message + '</p>'
+                          + "<p>This usually means there's a typo in your chart specification. "
+                          + "See the javascript console for the full traceback.</p>"
+                          + '</div>');
+          throw error;
+      }
+      const el = document.getElementById('vis');
+      vegaEmbed("#vis", spec, embedOpt)
+        .catch(error => showError(el, error));
+    })(vegaEmbed);
+
+  </script>
+</body>
+</html>

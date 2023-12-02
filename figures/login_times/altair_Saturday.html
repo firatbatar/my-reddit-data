@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    #vis.vega-embed {
+      width: 100%;
+      display: flex;
+    }
+
+    #vis.vega-embed details,
+    #vis.vega-embed details summary {
+      position: relative;
+    }
+  </style>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega-lite@5.15.1"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+</head>
+<body>
+  <div id="vis"></div>
+  <script>
+    (function(vegaEmbed) {
+      var spec = {"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "data": {"name": "data-7f2d23f25a2a426d0f556a455dd41ec5"}, "mark": {"type": "bar"}, "encoding": {"tooltip": [{"field": "count", "type": "quantitative"}, {"field": "RawTime", "type": "ordinal"}], "x": {"axis": {"tickCount": 48}, "field": "Time", "title": "Time", "type": "ordinal"}, "y": {"axis": {"tickCount": 5.0}, "field": "count", "title": "Count", "type": "quantitative"}}, "title": "Saturday", "$schema": "https://vega.github.io/schema/vega-lite/v5.15.1.json", "datasets": {"data-7f2d23f25a2a426d0f556a455dd41ec5": [{"Time": "12:00", "count": 5}, {"Time": "15:00", "count": 4}, {"Time": "18:30", "count": 3}, {"Time": "15:30", "count": 3}, {"Time": "11:30", "count": 3}, {"Time": "09:30", "count": 2}, {"Time": "22:30", "count": 2}, {"Time": "21:00", "count": 2}, {"Time": "16:00", "count": 2}, {"Time": "14:00", "count": 2}, {"Time": "13:30", "count": 2}, {"Time": "10:30", "count": 2}, {"Time": "10:00", "count": 2}, {"Time": "23:30", "count": 2}, {"Time": "04:30", "count": 2}, {"Time": "12:30", "count": 1}, {"Time": "13:00", "count": 1}, {"Time": "17:30", "count": 1}, {"Time": "17:00", "count": 1}, {"Time": "16:30", "count": 1}, {"Time": "02:30", "count": 1}, {"Time": "07:30", "count": 1}, {"Time": "19:30", "count": 1}, {"Time": "20:00", "count": 1}, {"Time": "20:30", "count": 1}, {"Time": "18:00", "count": 1}, {"Time": "21:30", "count": 1}, {"Time": "22:00", "count": 1}, {"Time": "06:00", "count": 1}, {"Time": "09:00", "count": 1}, {"Time": "08:30", "count": 1}, {"Time": "08:00", "count": 1}, {"Time": "19:00", "count": 0}, {"Time": "01:30", "count": 0}, {"Time": "01:00", "count": 0}, {"Time": "23:00", "count": 0}, {"Time": "07:00", "count": 0}, {"Time": "03:00", "count": 0}, {"Time": "02:00", "count": 0}, {"Time": "03:30", "count": 0}, {"Time": "14:30", "count": 0}, {"Time": "04:00", "count": 0}, {"Time": "00:30", "count": 0}, {"Time": "05:00", "count": 0}, {"Time": "11:00", "count": 0}, {"Time": "05:30", "count": 0}, {"Time": "06:30", "count": 0}, {"Time": "00:00", "count": 0}]}};
+      var embedOpt = {"mode": "vega-lite"};
+
+      function showError(el, error){
+          el.innerHTML = ('<div style="color:red;">'
+                          + '<p>JavaScript Error: ' + error.message + '</p>'
+                          + "<p>This usually means there's a typo in your chart specification. "
+                          + "See the javascript console for the full traceback.</p>"
+                          + '</div>');
+          throw error;
+      }
+      const el = document.getElementById('vis');
+      vegaEmbed("#vis", spec, embedOpt)
+        .catch(error => showError(el, error));
+    })(vegaEmbed);
+
+  </script>
+</body>
+</html>
