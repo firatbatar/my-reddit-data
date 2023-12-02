@@ -1,23 +1,3 @@
-def get_reddit_client():
-    import praw
-    import os
-    from dotenv import load_dotenv
-
-    # Load environment variables from .env file
-    load_dotenv()
-
-    # Authenticate with Reddit using password flow
-    reddit = praw.Reddit(
-        client_id=os.getenv("CLIENT_ID"),
-        client_secret=os.getenv("CLIENT_SECRET"),
-        password=os.getenv("REDDIT_PASSWORD"),
-        username=os.getenv("REDDIT_USERNAME"),
-        user_agent="script:myRedditDataCollecterBot:v1.0.0 by u/personalScraper",
-    )
-
-    return reddit  # Return the Reddit client
-
-
 def get_submission_vote_count(reddit, submission_id):
     from math import ceil
     from numpy import nan as np_nan
@@ -85,11 +65,11 @@ def scrape_post_flairs(reddit, ids):
     return flairs
 
 
-def scrape_post_vote_and_flair(reddit, file_path):
+def scrape_post_vote_and_flair(reddit, path, fname, save_path):
     import pandas as pd
 
     # Read the csv file containing the submission ids for the posts that I have voted
-    post_votes = pd.read_csv(file_path)
+    post_votes = pd.read_csv(path + fname)
 
     # Get votes
     print("Getting vote counts for posts that I have voted on...")
@@ -105,15 +85,15 @@ def scrape_post_vote_and_flair(reddit, file_path):
     post_votes["Flair"] = flairs
 
     # Save the dataframe to a csv file
-    post_votes.to_csv(file_path, index=False)
-    print(f"Saved the vote counts to {file_path}")
+    post_votes.to_csv(save_path + fname, index=False)
+    print(f"Saved the vote counts to {save_path + fname}")
 
 
-def scrape_comment_votes(reddit, file_path):
+def scrape_comment_votes(reddit, path, fname, save_path):
     import pandas as pd
 
     # Read the csv file containing the submission ids for the comments that I have voted
-    comment_votes = pd.read_csv(file_path)
+    comment_votes = pd.read_csv(path + fname)
     scores = []
     for id in comment_votes["id"]:
         score = get_comment_score(reddit, id)
@@ -124,15 +104,15 @@ def scrape_comment_votes(reddit, file_path):
     comment_votes["Score"] = scores
 
     # Save the dataframe to a csv file
-    comment_votes.to_csv(file_path, index=False)
-    print(f"Saved the vote counts to {file_path}")
+    comment_votes.to_csv(save_path + fname, index=False)
+    print(f"Saved the vote counts to {save_path + fname}")
 
 
-def get_sub_flairs(reddit, file_path):
+def get_sub_flairs(reddit, path, fname, save_path):
     import pandas as pd
 
     # Read the csv file containing the subreddit names
-    subreddits_df = pd.read_csv(file_path)
+    subreddits_df = pd.read_csv(path + fname)
 
     # Add flairs column to the dataframe
     subreddits_df["Flairs"] = None
@@ -154,28 +134,43 @@ def get_sub_flairs(reddit, file_path):
 
     
     # Save the dataframe to the csv file
-    subreddits_df.to_csv(file_path, index=False)
+    subreddits_df.to_csv(save_path + fname, index=False)
+    print(f"Saved the sub flairs to {save_path + fname}")
 
 
 def main():
     import pandas as pd
+    import praw
+    import os
+    from dotenv import load_dotenv
+    # Load environment variables from .env file
+    load_dotenv()
 
     # Get Reddit client
-    reddit = get_reddit_client()
-    data_path = "./data/"
+    # Authenticate with Reddit using password flow
+    reddit = praw.Reddit(
+        client_id=os.getenv("CLIENT_ID"),
+        client_secret=os.getenv("CLIENT_SECRET"),
+        password=os.getenv("REDDIT_PASSWORD"),
+        username=os.getenv("REDDIT_USERNAME"),
+        user_agent="script:myRedditDataCollecterBot:v1.0.0 by u/personalScraper",
+    )
 
-    scrape_post_vote_and_flair(reddit, data_path + "post_votes.csv")
+    raw_data_path = "./data/raw_data/"
+    save_path = "./data/processed_data/"
+
+    scrape_post_vote_and_flair(reddit, raw_data_path, "post_votes.csv", save_path=save_path)
 
     print("Getting vote counts for comments that I have voted on...")
-    scrape_comment_votes(reddit, data_path + "comment_votes.csv")
+    scrape_comment_votes(reddit, raw_data_path, "comment_votes.csv", save_path=save_path)
 
-    scrape_post_vote_and_flair(reddit, data_path + "post_headers.csv")
+    scrape_post_vote_and_flair(reddit, raw_data_path, "post_headers.csv", save_path=save_path)
 
     print("Getting vote counts for the comments that I have created...")
-    scrape_comment_votes(reddit, data_path + "comment_headers.csv")
+    scrape_comment_votes(reddit, raw_data_path, "comment_headers.csv", save_path=save_path)
 
     print("Getting flairs for the subreddits...")
-    get_sub_flairs(reddit, data_path + "subscribed_subreddits.csv")
+    get_sub_flairs(reddit, raw_data_path, "subscribed_subreddits.csv", save_path=save_path)
 
 if __name__ == "__main__":
     main()
