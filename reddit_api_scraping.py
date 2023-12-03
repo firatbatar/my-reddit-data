@@ -157,7 +157,7 @@ def main():
     )
 
     raw_data_path = "./data/raw_data/"
-    save_path = "./data/processed_data/"
+    save_path = "./data/scrapped_data/"
 
     scrape_post_vote_and_flair(reddit, raw_data_path, "post_votes.csv", save_path=save_path)
 
