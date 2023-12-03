@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    #vis.vega-embed {
+      width: 100%;
+      display: flex;
+    }
+
+    #vis.vega-embed details,
+    #vis.vega-embed details summary {
+      position: relative;
+    }
+  </style>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega-lite@5.15.1"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+</head>
+<body>
+  <div id="vis"></div>
+  <script>
+    (function(vegaEmbed) {
+      var spec = {"config": {"view": {"continuousWidth": 300, "continuousHeight": 300, "stroke": null}, "axisX": {"domainColor": "#000", "domainWidth": 2, "grid": false, "labelFontSize": 11, "titleFontSize": 18}, "axisY": {"domain": false, "grid": false, "labelFontSize": 14, "titleFontSize": 18}, "padding": {"left": 15, "right": 15, "top": 15, "bottom": 15}, "title": {"fontSize": 18}}, "data": {"name": "data-8a9036cdf3093ef4134f3e7751034846"}, "mark": {"type": "bar"}, "encoding": {"color": {"value": "#1f77b4"}, "tooltip": [{"field": "Count", "type": "quantitative"}, {"field": "Flair", "type": "nominal"}], "x": {"axis": {"labelAngle": -45}, "field": "Flair", "sort": "-y", "title": "Flair", "type": "nominal"}, "y": {"field": "Count", "type": "quantitative"}}, "height": 400, "params": [{"name": "show", "bind": {"input": "checkbox", "name": "Show Flairs with count 1"}}], "transform": [{"filter": "((datum.Count > 1) || show)"}], "width": 1200, "$schema": "https://vega.github.io/schema/vega-lite/v5.15.1.json", "datasets": {"data-8a9036cdf3093ef4134f3e7751034846": [{"Flair": "*happy dm noises*", "IsSubscribed": 1, "Count": 1}, {"Flair": "*sad dm noises*", "IsSubscribed": 2, "Count": 2}, {"Flair": "*scared player noises*", "IsSubscribed": 1, "Count": 1}, {"Flair": ".", "IsSubscribed": 1, "Count": 1}, {"Flair": "/r/all", "IsSubscribed": 1, "Count": 1}, {"Flair": "advanced", "IsSubscribed": 1, "Count": 1}, {"Flair": "ai assisted art", "IsSubscribed": 1, "Count": 1}, {"Flair": "ai cover", "IsSubscribed": 1, "Count": 1}, {"Flair": "aiart", "IsSubscribed": 1, "Count": 1}, {"Flair": "algebra", "IsSubscribed": 2, "Count": 2}, {"Flair": "arithmetic", "IsSubscribed": 1, "Count": 1}, {"Flair": "art", "IsSubscribed": 3, "Count": 3}, {"Flair": "bad math", "IsSubscribed": 5, "Count": 5}, {"Flair": "ben g*t m\u00fcy\u00fcm?", "IsSubscribed": 1, "Count": 1}, {"Flair": "bi \u015feyler", "IsSubscribed": 2, "Count": 2}, {"Flair": "bunu ben yapt\u0131m", "IsSubscribed": 8, "Count": 8}, {"Flair": "bunu tart\u0131\u015fal\u0131m", "IsSubscribed": 2, "Count": 2}, {"Flair": "calculus", "IsSubscribed": 3, "Count": 3}, {"Flair": "campaign meme", "IsSubscribed": 1, "Count": 1}, {"Flair": "classic", "IsSubscribed": 1, "Count": 1}, {"Flair": "comic", "IsSubscribed": 1, "Count": 1}, {"Flair": "competition", "IsSubscribed": 1, "Count": 1}, {"Flair": "complex analysis", "IsSubscribed": 1, "Count": 1}, {"Flair": "contest", "IsSubscribed": 1, "Count": 1}, {"Flair": "cosplay", "IsSubscribed": 1, "Count": 1}, {"Flair": "discussion", "IsSubscribed": 35, "Count": 35}, {"Flair": "duyuru", "IsSubscribed": 1, "Count": 1}, {"Flair": "electroboom question", "IsSubscribed": 1, "Count": 1}, {"Flair": "faf - rectify", "IsSubscribed": 1, "Count": 1}, {"Flair": "fan art", "IsSubscribed": 29, "Count": 29}, {"Flair": "film", "IsSubscribed": 3, "Count": 3}, {"Flair": "general book meme", "IsSubscribed": 4, "Count": 4}, {"Flair": "general question", "IsSubscribed": 1, "Count": 1}, {"Flair": "geometry", "IsSubscribed": 4, "Count": 4}, {"Flair": "goated title", "IsSubscribed": 1, "Count": 1}, {"Flair": "graphs", "IsSubscribed": 4, "Count": 4}, {"Flair": "help", "IsSubscribed": 1, "Count": 1}, {"Flair": "humor", "IsSubscribed": 1, "Count": 1}, {"Flair": "humour", "IsSubscribed": 247, "Count": 247}, {"Flair": "image", "IsSubscribed": 10, "Count": 10}, {"Flair": "instanceof trend", "IsSubscribed": 1, "Count": 1}, {"Flair": "irl", "IsSubscribed": 1, "Count": 1}, {"Flair": "jurassic park", "IsSubscribed": 1, "Count": 1}, {"Flair": "learning", "IsSubscribed": 5, "Count": 5}, {"Flair": "lord of the rings", "IsSubscribed": 1, "Count": 1}, {"Flair": "magnus chase meme", "IsSubscribed": 1, "Count": 1}, {"Flair": "math pun", "IsSubscribed": 2, "Count": 2}, {"Flair": "mathematicians", "IsSubscribed": 3, "Count": 3}, {"Flair": "meme", "IsSubscribed": 78, "Count": 78}, {"Flair": "meme violation", "IsSubscribed": 1, "Count": 1}, {"Flair": "merchandise", "IsSubscribed": 2, "Count": 2}, {"Flair": "miscellaneous", "IsSubscribed": 3, "Count": 3}, {"Flair": "mod approved", "IsSubscribed": 3, "Count": 3}, {"Flair": "modded content", "IsSubscribed": 1, "Count": 1}, {"Flair": "movie meme", "IsSubscribed": 1, "Count": 1}, {"Flair": "musical meme", "IsSubscribed": 1, "Count": 1}, {"Flair": "need advice", "IsSubscribed": 1, "Count": 1}, {"Flair": "non-electroboom video", "IsSubscribed": 1, "Count": 1}, {"Flair": "notations", "IsSubscribed": 2, "Count": 2}, {"Flair": "number theory", "IsSubscribed": 2, "Count": 2}, {"Flair": "oc", "IsSubscribed": 2, "Count": 2}, {"Flair": "oc fan art", "IsSubscribed": 2, "Count": 2}, {"Flair": "okaycolleagueresearcher", "IsSubscribed": 1, "Count": 1}, {"Flair": "other", "IsSubscribed": 6, "Count": 6}, {"Flair": "oyun", "IsSubscribed": 6, "Count": 6}, {"Flair": "percy jackson and the olympians meme", "IsSubscribed": 4, "Count": 4}, {"Flair": "poll", "IsSubscribed": 1, "Count": 1}, {"Flair": "probability", "IsSubscribed": 1, "Count": 1}, {"Flair": "proofs", "IsSubscribed": 1, "Count": 1}, {"Flair": "question", "IsSubscribed": 10, "Count": 10}, {"Flair": "question / discussion", "IsSubscribed": 3, "Count": 3}, {"Flair": "question / discusssion", "IsSubscribed": 2, "Count": 2}, {"Flair": "question/request", "IsSubscribed": 1, "Count": 1}, {"Flair": "removed: common post", "IsSubscribed": 1, "Count": 1}, {"Flair": "removed: low quality", "IsSubscribed": 1, "Count": 1}, {"Flair": "removed: not programming related", "IsSubscribed": 1, "Count": 1}, {"Flair": "removed: repost", "IsSubscribed": 3, "Count": 3}, {"Flair": "request", "IsSubscribed": 4, "Count": 4}, {"Flair": "ricam var", "IsSubscribed": 1, "Count": 1}, {"Flair": "rule 12: bad formatting", "IsSubscribed": 1, "Count": 1}, {"Flair": "rule 3: post style guide", "IsSubscribed": 1, "Count": 1}, {"Flair": "rule 3: reposts", "IsSubscribed": 1, "Count": 1}, {"Flair": "screenshot", "IsSubscribed": 2, "Count": 2}, {"Flair": "sponge-worthy", "IsSubscribed": 1, "Count": 1}, {"Flair": "stream clip", "IsSubscribed": 27, "Count": 27}, {"Flair": "suggestion", "IsSubscribed": 5, "Count": 5}, {"Flair": "tavsiye i\u0307sterim", "IsSubscribed": 3, "Count": 3}, {"Flair": "text-based meme", "IsSubscribed": 1, "Count": 1}, {"Flair": "the engineer", "IsSubscribed": 1, "Count": 1}, {"Flair": "topology", "IsSubscribed": 1, "Count": 1}, {"Flair": "trigonometry", "IsSubscribed": 1, "Count": 1}, {"Flair": "tv quote", "IsSubscribed": 1, "Count": 1}, {"Flair": "update", "IsSubscribed": 1, "Count": 1}, {"Flair": "video", "IsSubscribed": 2, "Count": 2}, {"Flair": "wholesome", "IsSubscribed": 1, "Count": 1}, {"Flair": "yapay zeka ile", "IsSubscribed": 3, "Count": 3}, {"Flair": "yay\u0131n kesiti", "IsSubscribed": 2, "Count": 2}, {"Flair": "you enter a dar- i have darkvision", "IsSubscribed": 1, "Count": 1}, {"Flair": "you guys use rules? :rules:", "IsSubscribed": 1, "Count": 1}, {"Flair": "youtube", "IsSubscribed": 2, "Count": 2}, {"Flair": "\u015fakalar komiklikler", "IsSubscribed": 7, "Count": 7}]}};
+      var embedOpt = {"mode": "vega-lite"};
+
+      function showError(el, error){
+          el.innerHTML = ('<div style="color:red;">'
+                          + '<p>JavaScript Error: ' + error.message + '</p>'
+                          + "<p>This usually means there's a typo in your chart specification. "
+                          + "See the javascript console for the full traceback.</p>"
+                          + '</div>');
+          throw error;
+      }
+      const el = document.getElementById('vis');
+      vegaEmbed("#vis", spec, embedOpt)
+        .catch(error => showError(el, error));
+    })(vegaEmbed);
+
+  </script>
+</body>
+</html>
