@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    #vis.vega-embed {
+      width: 100%;
+      display: flex;
+    }
+
+    #vis.vega-embed details,
+    #vis.vega-embed details summary {
+      position: relative;
+    }
+  </style>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega-lite@5.15.1"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+</head>
+<body>
+  <div id="vis"></div>
+  <script>
+    (function(vegaEmbed) {
+      var spec = {"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "data": {"name": "data-71a3bd12626beb1a905bdaaca13830c3"}, "mark": {"type": "bar"}, "encoding": {"tooltip": [{"aggregate": "count", "type": "quantitative"}], "x": {"bin": {"extent": [-2.0, 17106.0]}, "field": "Score", "type": "quantitative"}, "y": {"aggregate": "count", "type": "quantitative"}}, "height": 400, "params": [{"name": "param_5", "select": {"type": "interval", "encodings": ["x"]}}], "title": "All Scores", "width": 1200, "$schema": "https://vega.github.io/schema/vega-lite/v5.15.1.json", "datasets": {"data-71a3bd12626beb1a905bdaaca13830c3": [{"Score": 2.0}, {"Score": 1.0}, {"Score": 1190.0}, {"Score": 196.0}, {"Score": 5.0}, {"Score": 16.0}, {"Score": 326.0}, {"Score": 6.0}, {"Score": 1.0}, {"Score": 122.0}, {"Score": 1.0}, {"Score": 5.0}, {"Score": 2.0}, {"Score": 2.0}, {"Score": 91.0}, {"Score": 1.0}, {"Score": 1.0}, {"Score": 4.0}, {"Score": 11.0}, {"Score": 37.0}, {"Score": 2.0}, {"Score": 26.0}, {"Score": 1.0}, {"Score": 2.0}, {"Score": 15.0}, {"Score": 24.0}, {"Score": 2.0}, {"Score": 5.0}, {"Score": 2.0}, {"Score": 1.0}, {"Score": 2.0}, {"Score": 2.0}, {"Score": 17.0}, {"Score": 1.0}, {"Score": 10.0}, {"Score": 279.0}, {"Score": 10.0}, {"Score": 3.0}, {"Score": 1.0}, {"Score": 2.0}, {"Score": 6.0}, {"Score": 382.0}, {"Score": 2.0}, {"Score": 1.0}, {"Score": 5.0}, {"Score": 29.0}, {"Score": 13.0}, {"Score": 1.0}, {"Score": 142.0}, {"Score": 2.0}, {"Score": 5.0}, {"Score": 9.0}, {"Score": 8.0}, {"Score": 1.0}, {"Score": 1.0}, {"Score": 2.0}, {"Score": 1.0}, {"Score": 5.0}, {"Score": 13.0}, {"Score": 11.0}, {"Score": 1.0}, {"Score": 2.0}, {"Score": 8.0}, {"Score": 1.0}, {"Score": 2.0}, {"Score": 1.0}, {"Score": 3.0}, {"Score": 146.0}, {"Score": 1.0}, {"Score": 3.0}, {"Score": 6.0}, {"Score": 87.0}, {"Score": 12.0}, {"Score": 1.0}, {"Score": 5.0}, {"Score": 964.0}, {"Score": 2.0}, {"Score": 3.0}, {"Score": 3.0}, {"Score": 29.0}, {"Score": 9.0}, {"Score": 1.0}, {"Score": 11.0}, {"Score": 2.0}, {"Score": 152.0}, {"Score": 9.0}, {"Score": 32.0}, {"Score": 17106.0}, {"Score": 11.0}, {"Score": 1.0}, {"Score": 9.0}, {"Score": 39.0}, {"Score": 27.0}, {"Score": 206.0}, {"Score": 2.0}, {"Score": 49.0}, {"Score": 2.0}, {"Score": 3.0}, {"Score": 17.0}, {"Score": 15.0}, {"Score": 20.0}, {"Score": 1.0}, {"Score": 37.0}, {"Score": -1.0}, {"Score": 1.0}, {"Score": 2.0}, {"Score": 1.0}, {"Score": 9.0}, {"Score": 3525.0}, {"Score": 1.0}, {"Score": 203.0}, {"Score": 1.0}, {"Score": 2.0}, {"Score": 3.0}, {"Score": 657.0}, {"Score": 14.0}, {"Score": 1.0}, {"Score": 167.0}, {"Score": 5.0}, {"Score": 3.0}, {"Score": 1.0}, {"Score": 16.0}, {"Score": 3.0}, {"Score": 430.0}, {"Score": 722.0}, {"Score": 1.0}, {"Score": 1.0}, {"Score": 2.0}, {"Score": 1.0}, {"Score": 5.0}, {"Score": 1.0}, {"Score": 3.0}, {"Score": 1.0}, {"Score": 1.0}, {"Score": 6.0}, {"Score": 7.0}, {"Score": 2.0}, {"Score": 2.0}, {"Score": 1.0}, {"Score": 3.0}, {"Score": 1.0}, {"Score": 41.0}, {"Score": 1.0}, {"Score": 1.0}, {"Score": 1.0}, {"Score": 1.0}, {"Score": 4.0}, {"Score": 156.0}, {"Score": 1.0}, {"Score": 20.0}, {"Score": 4.0}, {"Score": 3.0}, {"Score": 3.0}, {"Score": 1.0}, {"Score": 443.0}, {"Score": 3.0}, {"Score": 3.0}, {"Score": 462.0}, {"Score": 3.0}, {"Score": 3.0}, {"Score": 1.0}, {"Score": 2.0}, {"Score": 7.0}, {"Score": 8.0}, {"Score": 1.0}, {"Score": 2.0}, {"Score": 2.0}, {"Score": 1.0}, {"Score": 10.0}, {"Score": 1.0}, {"Score": 1082.0}, {"Score": 16.0}, {"Score": 10.0}, {"Score": 169.0}, {"Score": 8.0}, {"Score": 3.0}, {"Score": 13.0}, {"Score": 3.0}, {"Score": 1.0}, {"Score": 5.0}, {"Score": 2.0}, {"Score": 34.0}, {"Score": 10.0}, {"Score": 741.0}, {"Score": 327.0}, {"Score": 2.0}, {"Score": 4.0}, {"Score": 16.0}, {"Score": 0.0}, {"Score": 9.0}, {"Score": 8.0}, {"Score": 5.0}, {"Score": 2.0}, {"Score": 1.0}, {"Score": 2.0}, {"Score": 5.0}, {"Score": 6.0}, {"Score": 2.0}, {"Score": 1.0}, {"Score": 15.0}, {"Score": 114.0}, {"Score": 3.0}, {"Score": 21.0}, {"Score": 422.0}, {"Score": 2.0}, {"Score": 58.0}, {"Score": 1.0}, {"Score": 2.0}, {"Score": 30.0}, {"Score": 1.0}, {"Score": 6.0}, {"Score": 17.0}, {"Score": 8.0}, {"Score": 1.0}, {"Score": 5.0}, {"Score": 1.0}, {"Score": 656.0}, {"Score": 2.0}, {"Score": 2.0}, {"Score": -2.0}, {"Score": 1.0}, {"Score": 9.0}, {"Score": 14.0}, {"Score": 4.0}, {"Score": 1.0}, {"Score": 4.0}, {"Score": 3.0}, {"Score": 50.0}, {"Score": 3.0}, {"Score": 82.0}, {"Score": 32.0}, {"Score": 2.0}, {"Score": 173.0}, {"Score": 12.0}, {"Score": 112.0}, {"Score": 33.0}, {"Score": 7.0}, {"Score": 236.0}, {"Score": 1.0}, {"Score": 5.0}, {"Score": 7.0}, {"Score": 102.0}, {"Score": 1.0}, {"Score": 45.0}, {"Score": 2.0}, {"Score": 24.0}, {"Score": 2.0}, {"Score": 126.0}, {"Score": 1.0}, {"Score": 4.0}, {"Score": -1.0}, {"Score": 11.0}, {"Score": 69.0}, {"Score": 39.0}, {"Score": 35.0}, {"Score": 1.0}, {"Score": 37.0}, {"Score": 11.0}, {"Score": 247.0}]}};
+      var embedOpt = {"mode": "vega-lite"};
+
+      function showError(el, error){
+          el.innerHTML = ('<div style="color:red;">'
+                          + '<p>JavaScript Error: ' + error.message + '</p>'
+                          + "<p>This usually means there's a typo in your chart specification. "
+                          + "See the javascript console for the full traceback.</p>"
+                          + '</div>');
+          throw error;
+      }
+      const el = document.getElementById('vis');
+      vegaEmbed("#vis", spec, embedOpt)
+        .catch(error => showError(el, error));
+    })(vegaEmbed);
+
+  </script>
+</body>
+</html>
