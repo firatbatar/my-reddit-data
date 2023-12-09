@@ -17,7 +17,7 @@ I have two main sources of data:
 -   Data that is directly exported from Reddit as a personal [data request](https://www.reddit.com/settings/data-request).
 -   Data that is scrapped using [Reddit API](https://www.reddit.com/dev/api/) through a simple Python script using [PRAW](https://github.com/praw-dev/praw) package, following [Reddit's API rules](https://github.com/reddit/reddit/wiki/API). Script is available in `reddit_api_scraping.py` file.
 
-Besides these, in order to create a tag system for subreddits, I have created a Google Form to get tags annotated by hand. I wrote a Apps Script to automatically create a Google Form automatically from the data. Form is available [here](https://forms.gle/1Au5wvMbbGCurx2n6).
+Besides these, in order to create a tag system for subreddits, I have created a Google Form to get tags annotated by hand. I wrote a Apps Script to automatically create a Google Form automatically from the data. Form is available [here](https://forms.gle/cKnMTpAyFxGkHKVy5).
 
 ### Requested data
 
