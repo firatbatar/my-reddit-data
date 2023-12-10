@@ -45,13 +45,13 @@ Requested data is read by scraper script and after scrapping, it is saved as new
 
 ### Tools
 
-**[Jupyter Notebook](https://jupyter.org/):** Used for coding and documentation.
+**[Jupyter Notebook](https://jupyter.org/):** Used for coding and documentation.  
 **[Pandas](https://pandas.pydata.org/):** Used for data cleaning, filtering, and structuring.  
 **[Altair](https://altair-viz.github.io/index.html):** Mainly employed for exploratory data analysis (EDA) and interactive visualizations.  
-**[Matplotlib](https://matplotlib.org/) and [Seaborn](https://seaborn.pydata.org/):** Supplementary for visualizations if needed.
-**[Numpy](https://numpy.org/):** Used for mathematical operations.
-**[Scipy](https://www.scipy.org/):** Used for statistical analysis.
-**[distfit](https://github.com/erdogant/distfit)** Used for distribution fitting.
+**[Matplotlib](https://matplotlib.org/) and [Seaborn](https://seaborn.pydata.org/):** Supplementary for visualizations if needed.  
+**[Numpy](https://numpy.org/):** Used for mathematical operations.  
+**[Scipy](https://www.scipy.org/):** Used for statistical analysis.  
+**[distfit](https://github.com/erdogant/distfit)** Used for distribution   fitting.
 
 
 ### Stages of Analysis
