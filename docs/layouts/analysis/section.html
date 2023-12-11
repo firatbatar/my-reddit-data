@@ -1,0 +1,36 @@
+{{ define "meta_tags" }}
+
+    <meta name="description" content="Fırat Batar's Reddit Analysis">
+    <meta name="keywords" content="Fırat Batar, Reddit Analysis, Data Science">
+    {{/*  Meta tags for Open Graph  */}}
+    <meta property="og:title" content="Reddit Analysis">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://firatbatar.com/my-reddit-data/analysis">
+    <meta property="og:site_name" content="firatbatar/my-reddit-data"/>
+    <meta property="og:description" content="Fırat Batar's Reddit Analysis.">
+    
+{{ end }}
+
+{{ define "main" }}
+
+<h1 class="text-center my-5">{{ .Title }}</h1>
+
+{{ range .Pages }}
+<div class="container mb-4" style="height: fit-content;">
+    <div class="p-3 container-fluid bg-body-tertiary rounded-3 row h-100">
+        <div class="col d-flex flex-column justify-content-between my-3" style="max-height: 100%;">
+            <h2>{{ .Title }}</h2>
+            <span>
+                {{ .Summary | markdownify }}
+            </span>
+
+            <a href="{{ .RelPermalink }}" class="btn btn-primary align-self-end">
+                Details
+                <i class="fa-solid fa-caret-right" style="color: #ffffff;"></i>
+            </a>
+        </div>
+    </div>
+</div>
+{{ end }}
+
+{{ end }}

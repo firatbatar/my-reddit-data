@@ -21,3 +21,7 @@ disableKinds = ['taxonomy', 'term']
     name = 'About'
     pageRef = '/about'
     weight = 20
+[[menu.main]]
+    name = 'All Analyses'
+    pageRef = '/analysis'
+    weight = 30

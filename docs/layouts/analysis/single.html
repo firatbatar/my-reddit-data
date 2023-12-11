@@ -1,0 +1,24 @@
+{{ define "meta_tags" }}
+
+    <meta name="description" content="Fırat Batar's Reddit Analysis on '{{ .Title }}'">
+    <meta name="keywords" content="Fırat Batar, {{ .Params.keywords }}">
+    {{/*  Meta tags for Open Graph  */}}
+    <meta property="og:title" content="{{ .Title }}">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://firatbatar.com/my-reddit-data/analysis">
+    <meta property="og:site_name" content="firatbatar/my-reddit-analysis"/>
+    <meta property="og:description" content="Fırat Batar's Reddit Analysis on '{{ .Title }}'.">
+
+{{ end }}
+
+{{ define "main" }}
+
+<div class="container py-5">
+    <h1 class="text-center">{{ .Title }}</h1>
+
+    <div class="my-5 pb-5">
+        {{ .Content }}
+    </div>
+</div>
+
+{{ end }}

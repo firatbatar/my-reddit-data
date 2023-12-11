@@ -1,3 +1,16 @@
-<section id="about" class="my-5 py-5 bg-body fs-5">
-    {{ partial "components/jumbotron.html" . }}
+<section id="about" class="py-5 bg-body fs-5">
+    <div class="container">
+        <div class="p-5 mb-4 rounded-3">
+            <div class="container-fluid py-2">
+                <h1 class="text-start mb-5">{{ .Title }}</h1>
+                {{ .Summary | markdownify }}
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-3 d-flex justify-content-end">
+        <p>For a more details
+            <a class="ms-2 btn btn-primary" href="/my-reddit-data/about">About <i aria-hidden="true" class="fa-solid fa-caret-right" style="color:#fff"></i></a>
+        </p>
+    </div>
 </section>

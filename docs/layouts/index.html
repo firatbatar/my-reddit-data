@@ -1,33 +1,25 @@
 {{ define "meta_tags" }}
-    <meta name="description" content="The personal website of Fırat Batar">
-    <meta name="keywords" content="Fırat Batar">
+    <meta name="description" content="Fırat Batar's analysis on personal Reddit Usage">
+    <meta name="keywords" content="Fırat Batar, Reddit Usage, Data Science">
     {{/*  Meta tags for Open Graph  */}}
-    <meta property="og:title" content="Fırat Batar's Website">
+    <meta property="og:title" content="Fırat Batar's Reddit Analysis">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://firatbatar.com">
-    {{/*  <meta property="og:image" content="https://firatbatar.com/images/firatbatar.jpg">  */}}
-    <meta property="og:description" content="The personal website of Fırat Batar.">
+    <meta property="og:url" content="https://firatbatar.com/my-reddit-data">
+    <meta property="og:description" content="Fırat Batar's analysis on personal Reddit Usage.">
 
 {{ end }}
 
 {{ define "main" }}
 
-<div class="container">
-    <div id="hero" class="p-5 mb-4 rounded-3 text-center">
-        <div class="container-fluid py-5">
-            <span class="text-start">
-                <h1>Hello,</h1>
-                <h1>Fırat here. &#128400</h1>
-            </span>
-        </div>
-    </div>
-</div>
-
-
 {{ $about := .Site.GetPage "about/" }}
+{{ $analysis := .Site.GetPage "analysis/" }}
 
 {{ if $about }}
 {{ partial "sections/about.html" $about }}
+{{ end }}
+
+{{ if $analysis }}
+{{ partial "sections/analysis.html" $analysis }}
 {{ end }}
 
 {{ end }}
