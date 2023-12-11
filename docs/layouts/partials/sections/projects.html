@@ -1,0 +1,23 @@
+<section id="projects" class="my-5 py-5 bg-body-secondary">
+    <div class="container">
+        <h1 class="text-end mb-5 me-5">{{ .Title }}</h1>
+        <div id="projectsCarousel" class="carousel">
+            <div class="carousel-inner">
+                {{ range .Pages }}
+                <div class="carousel-item">
+                    {{ partial "components/card.html" . }}
+                </div>
+                {{ end }}
+            </div>
+            
+            <button class="carousel-control-prev" type="button" data-bs-target="#projectsCarousel" data-bs-slide="prev">
+                <i class="fa-solid fa-angle-left text-dark"></i>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#projectsCarousel" data-bs-slide="next">
+                <i class="fa-solid fa-angle-right text-dark"></i>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+</section>

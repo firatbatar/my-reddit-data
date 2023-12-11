@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    
+    {{/*  Meta tags  */}}
+    <meta name="google" content="nositelinkssearchbox">
+    <meta name="googlebot" content="notranslate">
+    <meta name="author" content="Fırat Batar">
+    {{ block "meta_tags" . }} {{ end }}
+
+    {{ $bootstrap_css := "bootstrap-5/css/bootstrap.min.css" | relURL }}
+    <link rel="stylesheet" href="{{ $bootstrap_css }}">
+
+    {{/*  Add custom css  */}}
+    {{ $custom_css := "css/style.css" | relURL }}
+    <link rel="stylesheet" href="{{ $custom_css }}">
+
+
+    {{ $bootstrap_js := "bootstrap-5/js/bootstrap.bundle.min.js" | relURL }}
+    <script src="{{ $bootstrap_js }}"></script>
+
+    {{/* Add fontawsome script */}}
+    <script src="https://kit.fontawesome.com/0108cca026.js" crossorigin="anonymous"></script>
+
+    {{/*  Add jqeury  */}}
+    {{ $jqeury := "jquery/jquery-3.7.1.min.js" | relURL }}
+    <script src="{{ $jqeury }}"></script>
+    
+    <title>{{ .Title }}</title>
+</head>
+<body class="bg-body-secondary">
+    {{ partial "header.html" . }}
+
+    <div class="return_to_top" title="Return to Top">
+        <button class="<-3 position-fixed border-0 rounded-circle bg-dark" type="button" id="return_to_top_btn" >
+            <i class="fa-solid fa-up-long text-white"></i>
+        </button>
+    </div>
+
+    <main id="main">
+        {{ block "main" . }} {{ end }}
+    </main>
+
+    {{/*  Add custom js  */}}
+    {{ $color_mode_script := "js/colormode_script.js" | relURL }}
+    <script src="{{ $color_mode_script }}"></script>   
+    {{ $carousel_script := "js/carousel_script.js" | relURL }}
+    <script src="{{ $carousel_script }}"></script>
+    {{ $return_to_top_script := "js/return_to_top_script.js" | relURL }}
+    <script src="{{ $return_to_top_script }}"></script>
+
+    {{ partial "footer.html" . }}
+</body>
+
+</html>

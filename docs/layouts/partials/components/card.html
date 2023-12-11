@@ -1,0 +1,25 @@
+<div class="card h-100">
+    {{ $image := .Resources.GetMatch .Params.coverImage }}
+    {{ if not $image }}
+    {{ $image = resources.Get .Site.Params.placeholderImage }}
+    {{ end }}
+    <img src="{{ $image.RelPermalink }}" class="card-img-top" alt="{{ lower .Title }}-img">
+    
+    <div class="card-head mx-3 mt-3 pt-3 w-75">
+        {{ range .Params.tags }}
+        <span class="badge rounded-pill bg-secondary">{{ . }}</span>
+        {{ end }}
+    </div>
+
+    <div class="card-body pt-4 pb-5">
+        <h5 class="card-title">{{ .Title }}</h5>
+        <p class="card-text">{{ .Summary | markdownify }}</p>
+    </div>
+    
+    <div class="card-footer">
+        <a href="{{ .RelPermalink }}" class="btn btn-primary float-end">
+            Details
+            <i class="fa-solid fa-caret-right" style="color: #ffffff;"></i>
+        </a>
+    </div>
+</div>

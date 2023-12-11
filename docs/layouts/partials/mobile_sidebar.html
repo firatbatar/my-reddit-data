@@ -1,0 +1,36 @@
+{{ with site.Menus.main }}
+<nav class="navbar navbar-expand-lg text-light py-3">
+    <div class="container-fluid" id="navbarNav">
+        <a href="/" class="nav-item nav-link fs-3 fw-bold ms-4">Fırat Batar</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar"
+            aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
+            <i class="fa-solid fa-bars text-dark-subtle"></i>
+        </button>
+        <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar"
+            aria-labelledby="offcanvasDarkNavbarLabel" style="width: 300px;">
+            <div class="offcanvas-header">
+                <button id="color-mode-toggle-btn-sb" class="nav-item btn btn-link nav-link text-light">
+                    <i id="dark-mode-toggle-icon-sb" class="fa-solid fa-moon"></i>
+                    <i id="light-mode-toggle-icon-sb" class="fa-solid fa-sun"></i>
+                </button>
+                <button type="button" class="btn-close btn-close-white ms-auto" data-bs-dismiss="offcanvas"
+                    aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                    {{ range . }}
+                    <li class="nav-item">
+                        {{ if $.IsMenuCurrent .Menu . }}
+                        <a class="nav-link active text-dark-subtle" aria-current="page" href="{{ .URL }}">{{ .Name
+                            }}</a>
+                        {{ else }}
+                        <a class="nav-link text-light" href="{{ .URL }}">{{ .Name }}</a>
+                        {{ end }}
+                    </li>
+                    {{ end }}
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>
+{{ end }}

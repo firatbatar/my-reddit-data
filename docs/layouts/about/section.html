@@ -1,0 +1,23 @@
+{{ define "meta_tags" }}
+
+    <meta name="description" content="About Fırat Batar">
+    <meta name="keywords" content="Fırat Batar, about">
+    {{/*  Meta tags for Open Graph  */}}
+    <meta property="og:title" content="About Me">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://firatbatar.com/about">
+    <meta property="og:site_name" content="firatbatar" />
+    <meta property="og:description" content="About Fırat Batar.">
+    
+{{ end }}
+
+{{ define "main" }}
+
+<div class="container">
+    <h1 class="text-center my-5">{{ .Title }}</h1>
+    <div style="margin-bottom: 15rem;">
+        {{ .Content }}
+    </div>
+</div>
+    
+{{ end }}

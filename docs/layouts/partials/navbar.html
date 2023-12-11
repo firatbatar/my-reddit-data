@@ -1,0 +1,26 @@
+{{ with site.Menus.main }}
+<nav class="navbar navbar-expand-lg text-light py-3">
+    <div class="container-fluid" id="navbarNav">
+        <a href="/" class="nav-item nav-link fs-3 fw-bold ms-4">Fırat Batar</a>
+        <ul class="navbar-nav ms-auto d-flex flex-row">
+            {{ range . }}
+            <li class="nav-item ms-2">
+                {{ if $.IsMenuCurrent .Menu . }}
+                <a class="nav-link active text-dark-subtle" aria-current="page" href="{{ .URL }}">{{ .Name }}</a>
+                {{ else }}
+                <a class="nav-link text-light" href="{{ .URL }}">{{ .Name }}</a>
+                {{ end }}
+            </li>
+            {{ end }}
+
+            <!-- Color mode toggle -->
+            <li class="nav-item ms-3">
+                <button id="color-mode-toggle-btn" class="btn btn-link nav-link text-light">
+                    <i id="dark-mode-toggle-icon" class="fa-solid fa-moon"></i>
+                    <i id="light-mode-toggle-icon" class="fa-solid fa-sun"></i>
+                </button>
+            </li>
+        </ul>
+    </div>
+</nav>
+{{ end }}
