@@ -146,67 +146,27 @@
     <div style="margin-bottom: 15rem;">
         <h1 id="my-reddit-usage-data-analysis">My Reddit Usage Data Analysis</h1>
 <br/>
+<p><strong><em>For all the details and the source code of the project, please visit the <a style="text-decoration: none;" href="https://github.com/firatbatar/my-reddit-data" target="_blank">GitHub repository</a>.</em></strong></p>
 <h2 id="description">Description</h2>
 <p>Sabancı University CS210 Intorduction to Data Scince Course Fall 2023-2024 Term Project.<br>
-This project will be an analysis on my own <a href="https://www.reddit.com/" target="_blank">Reddit</a> usage.</p>
+This project will be an analysis on my own <a href="https://www.reddit.com/">Reddit</a> usage.</p>
 <h2 id="motivation">Motivation</h2>
 <p>While thinking about a project I thought I might analyze my interaction with outside world which is done mostly through social media. Since Reddit is my primary social media platform, I decided to go with that.<br>
 The motivation of this analysis is to gain a deeper understanding of my own Reddit usage patterns. By analyzing the subreddits I&rsquo;m subscribed to, when I am active in Reddit, and my engagement with posts and comments, I aim to gain insights into my online behavior and interests.</p>
 <h2 id="data-source">Data Source</h2>
-<p>I have two main sources of data:</p>
-<ul>
-<li>Data that is directly exported from Reddit as a personal <a href="https://www.reddit.com/settings/data-request">data request</a>.</li>
-<li>Data that is scrapped using <a href="https://www.reddit.com/dev/api/">Reddit API</a> through a simple Python script using <a href="https://github.com/praw-dev/praw">PRAW</a> package, following <a href="https://github.com/reddit/reddit/wiki/API">Reddit&rsquo;s API rules</a>. Script is available in <code>reddit_api_scraping.py</code> file.</li>
-</ul>
-<p>Besides these, in order to create a tag system for subreddits, I have created a Google Form to get tags annotated by hand. I wrote a Apps Script to automatically create a Google Form automatically from the data. Form is available <a href="https://forms.gle/cKnMTpAyFxGkHKVy5">here</a>.</p>
-<h3 id="requested-data">Requested data</h3>
-<p>Requested data is in .csv format and contains:</p>
+<p>The data for this analysis is coming from my own Reddit account. I&rsquo;ve <a href="https://www.reddit.com/settings/data-request">Reddit Data Request</a> and used <a href="https://www.reddit.com/dev/api/">Reddit API</a>, following <a href="https://github.com/reddit/reddit/wiki/API">Reddit&rsquo;s API rules</a>, to collect the data.</p>
+<h3 id="the-data-includes">The Data Includes</h3>
 <ul>
 <li>Subscribed subreddits</li>
 <li>Login history</li>
-<li>Voted posts</li>
-<li>Voted comments</li>
-<li>Created posts</li>
-<li>Created comments</li>
-</ul>
-<h3 id="reddit-api">Reddit API</h3>
-<p>Using Reddit API, I scrapped the following data:</p>
-<ul>
-<li>Total number of upvotes and downvotes for each post and comment</li>
-<li>The score (net upvotes) of each comment</li>
+<li>Voted posts and comments</li>
+<li>Created posts and comments</li>
+<li>The score for each post and comment</li>
 <li>Available submission flairs for each subreddit (if exists)</li>
 <li>Flairs of each post (if exists)</li>
 </ul>
-<p>Requested data is read by scraper script and after scrapping, it is saved as new .csv files.</p>
-<h2 id="data-analysis">Data Analysis</h2>
-<h3 id="tools">Tools</h3>
-<p><strong><a href="https://jupyter.org/">Jupyter Notebook</a>:</strong> Used for coding and documentation.<br>
-<strong><a href="https://pandas.pydata.org/">Pandas</a>:</strong> Used for data cleaning, filtering, and structuring.<br>
-<strong><a href="https://altair-viz.github.io/index.html">Altair</a>:</strong> Mainly employed for exploratory data analysis (EDA) and interactive visualizations.<br>
-<strong><a href="https://matplotlib.org/">Matplotlib</a> and <a href="https://seaborn.pydata.org/">Seaborn</a>:</strong> Supplementary for visualizations if needed.<br>
-<strong><a href="https://numpy.org/">Numpy</a>:</strong> Used for mathematical operations.<br>
-<strong><a href="https://www.scipy.org/">Scipy</a>:</strong> Used for statistical analysis.<br>
-<strong><a href="https://github.com/erdogant/distfit">distfit</a></strong> Used for distribution   fitting.</p>
-<h3 id="stages-of-analysis">Stages of Analysis</h3>
-<p>All the analysis is done in <code>reddit_usage_analysis.ipynb</code> file. Notebook is structered and commented in a way that it can be followed easily.</p>
-<h4 id="data-cleaning-and-structuring">Data Cleaning and Structuring</h4>
-<p>Different .csv files are read and filtered according to the needs of the analysis. Detailed information about the data cleaning and structuring can be found in the notebook <code>reddit_usage_analysis.ipynb</code>. But in short:</p>
-<ul>
-<li>Subscribed subreddits are sorted in lexicographical order. Followed users are removed.</li>
-<li>Login history is filtered to only include date, month, and day names in GMT+3 timezone.</li>
-<li>Voted posts and comments are filtered to only include my vote direction, score, flair, sub name, and if I am subscribed to that sub or not.</li>
-<li>Created posts and comments are filtered to only include score, flair, sub name, if I am subscribed to that sub or not, and date.</li>
-</ul>
-<h4 id="visualizations">Visualizations</h4>
-<h2 id="findings">Findings</h2>
-<!-- Template from ChatGPT
-Through this analysis, I discovered:
-
-Patterns in subreddit subscriptions and correlations with personal interests or activities.
-Insights into my online behavior based on login times and comparison with my class schedule.
-Voting patterns on posts/comments, including frequency and preferences based on flairs and vote counts.
-Self-reflection on my own contributions through posts/comments and their respective flairs/vote counts.
--->
+<h2 id="data-analysis-and-findings">Data Analysis and Findings</h2>
+<p>After cleaning and structuring the data, I analyzed my Reddit usage in different ways. The results of the analysis can be found at the <a href="https://firatbatar.com/my-reddit-data/analysis/">analyses page</a>.</p>
 <h2 id="limitations-and-future-work">Limitations and Future Work</h2>
 <!-- Template from ChatGPT
 Limitations
