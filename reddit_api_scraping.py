@@ -172,5 +172,23 @@ def main():
     print("Getting flairs for the subreddits...")
     get_sub_flairs(reddit, raw_data_path, "subscribed_subreddits.csv", save_path=save_path)
 
+    
+    # Combine annotated tags with scrapped data
+    annotated_data = pd.read_csv(raw_data_path + "Tag_Responses.csv")
+    scrapped_data = pd.read_csv(save_path + "subscribed_subreddits.csv")
+    scrapped_data["Tags"] = None  # Add a new column for the tags
+
+    # Read the tags for each sub
+    for col in annotated_data.columns[1:]:  # Skip the first column which is the timestamp
+        sub_name = col.split(" ")[0][2:]
+        tags = annotated_data[col].map(lambda x: x.split(", ")).explode().value_counts()
+        accepted_tags = tags[tags > tags.mean()].sort_values().index.to_list()[:3]
+
+        scrapped_data.loc[scrapped_data["subreddit"] == sub_name, "Tags"] = ", ".join(accepted_tags)
+
+    # Save the dataframe to the csv file
+    scrapped_data.to_csv(save_path + "subscribed_subreddits.csv", index=False)
+
+
 if __name__ == "__main__":
     main()
