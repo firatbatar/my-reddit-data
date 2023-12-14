@@ -174,7 +174,7 @@ def main():
 
     
     # Combine annotated tags with scrapped data
-    annotated_data = pd.read_csv(raw_data_path + "Tag_Responses.csv")
+    annotated_data = pd.read_csv(raw_data_path + "tags.csv")
     scrapped_data = pd.read_csv(save_path + "subscribed_subreddits.csv")
     scrapped_data["Tags"] = None  # Add a new column for the tags
 
