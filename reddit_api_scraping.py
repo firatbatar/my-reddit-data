@@ -182,7 +182,7 @@ def main():
     for col in annotated_data.columns[1:]:  # Skip the first column which is the timestamp
         sub_name = col.split(" ")[0][2:]
         tags = annotated_data[col].map(lambda x: x.split(", ")).explode().value_counts()
-        accepted_tags = tags[tags > tags.mean()].sort_values().index.to_list()[:3]
+        accepted_tags = tags[tags >= tags.mean()].sort_values().index.to_list()[:3]
 
         scrapped_data.loc[scrapped_data["subreddit"] == sub_name, "Tags"] = ", ".join(accepted_tags)
 
