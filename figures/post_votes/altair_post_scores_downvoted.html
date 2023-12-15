@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    #vis.vega-embed {
+      width: 100%;
+      display: flex;
+    }
+
+    #vis.vega-embed details,
+    #vis.vega-embed details summary {
+      position: relative;
+    }
+  </style>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega-lite@5.15.1"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+</head>
+<body>
+  <div id="vis"></div>
+  <script>
+    (function(vegaEmbed) {
+      var spec = {"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "data": {"name": "data-c035607e6219770b9f2017a6f89a6810"}, "mark": {"type": "bar"}, "encoding": {"tooltip": [{"aggregate": "count", "type": "quantitative"}], "x": {"axis": {"labelExpr": "pow(10, datum.value)"}, "bin": {"minstep": 1}, "field": "Scores", "title": "Scores (log10 spacing)", "type": "quantitative"}, "y": {"aggregate": "count", "type": "quantitative"}}, "height": 300, "title": "Downvoted Posts' Scores", "width": 600, "$schema": "https://vega.github.io/schema/vega-lite/v5.15.1.json", "datasets": {"data-c035607e6219770b9f2017a6f89a6810": [{"Scores": 0.0, "MyVote": -1.0}, {"Scores": 0.3010299956639812, "MyVote": -1.0}, {"Scores": 2.8115750058705933, "MyVote": -1.0}, {"Scores": 2.848189116991399, "MyVote": -1.0}, {"Scores": 2.2810333672477277, "MyVote": -1.0}, {"Scores": 2.3729120029701067, "MyVote": -1.0}, {"Scores": 2.693726948923647, "MyVote": -1.0}, {"Scores": 0.0, "MyVote": -1.0}, {"Scores": 0.0, "MyVote": -1.0}, {"Scores": 0.0, "MyVote": -1.0}, {"Scores": 0.0, "MyVote": -1.0}, {"Scores": 3.2576785748691846, "MyVote": -1.0}, {"Scores": 3.2702128548962426, "MyVote": -1.0}, {"Scores": 0.0, "MyVote": -1.0}, {"Scores": 2.0170333392987803, "MyVote": -1.0}, {"Scores": 1.3424226808222062, "MyVote": -1.0}, {"Scores": 2.0086001717619175, "MyVote": -1.0}, {"Scores": 1.1760912590556813, "MyVote": -1.0}, {"Scores": 1.1139433523068367, "MyVote": -1.0}, {"Scores": 1.1760912590556813, "MyVote": -1.0}, {"Scores": 2.5010592622177517, "MyVote": -1.0}, {"Scores": 2.4771212547196626, "MyVote": -1.0}, {"Scores": 1.7323937598229686, "MyVote": -1.0}, {"Scores": 0.0, "MyVote": -1.0}, {"Scores": 3.8636202202703154, "MyVote": -1.0}, {"Scores": 2.9138138523837167, "MyVote": -1.0}, {"Scores": 3.610234175334389, "MyVote": -1.0}, {"Scores": 1.0791812460476249, "MyVote": -1.0}, {"Scores": 1.9731278535996986, "MyVote": -1.0}]}};
+      var embedOpt = {"mode": "vega-lite"};
+
+      function showError(el, error){
+          el.innerHTML = ('<div style="color:red;">'
+                          + '<p>JavaScript Error: ' + error.message + '</p>'
+                          + "<p>This usually means there's a typo in your chart specification. "
+                          + "See the javascript console for the full traceback.</p>"
+                          + '</div>');
+          throw error;
+      }
+      const el = document.getElementById('vis');
+      vegaEmbed("#vis", spec, embedOpt)
+        .catch(error => showError(el, error));
+    })(vegaEmbed);
+
+  </script>
+</body>
+</html>

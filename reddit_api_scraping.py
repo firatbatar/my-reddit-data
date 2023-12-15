@@ -1,24 +1,14 @@
-def get_submission_vote_count(reddit, submission_id):
+def get_submission_score(reddit, submission_id):
     from math import ceil
     from numpy import nan as np_nan
 
     try:
         submission = reddit.submission(id=submission_id)
         submission_score = submission.score
-        submission_upvote_ratio = submission.upvote_ratio
     except:
-        return [np_nan, np_nan]  # Return NaN if the submission is hidden or inaccessible for some reason
+        return np_nan  # Return NaN if the submission is hidden or inaccessible for some reason
 
-    # Calculate the number of upvotes and downvotes
-    if submission_upvote_ratio == 1:
-        return [submission_score, 0]
-    if submission_upvote_ratio == 0.5:
-        return [submission_score / 2, submission_score / 2]
-
-    downvotes = submission_score * (submission_upvote_ratio - 1) / (-2 * submission_upvote_ratio + 1)
-    upvotes = -submission_upvote_ratio * downvotes / (submission_upvote_ratio - 1)
-
-    return [ceil(upvotes), ceil(downvotes)]
+    return submission_score
 
 
 def get_submission_flair(reddit, submission_id):
@@ -43,16 +33,14 @@ def get_comment_score(reddit, comment_id):
     return comment_score
 
 
-def scrape_post_votes(reddit, ids): 
-    ups = []
-    downs = []
+def scrape_post_scores(reddit, ids): 
+    scores = []
     for id in ids:
-        [up, down] = get_submission_vote_count(reddit, id)
-        print(f"ID: {id} - Upvotes: {up}, Downvotes: {down}")
-        ups.append(up)
-        downs.append(down)
+        score = get_submission_score(reddit, id)
+        print(f"ID: {id} - Score: {score}")
+        scores.append(score)
 
-    return [ups, downs]
+    return scores
 
 
 def scrape_post_flairs(reddit, ids): 
@@ -73,10 +61,9 @@ def scrape_post_vote_and_flair(reddit, path, fname, save_path):
 
     # Get votes
     print("Getting vote counts for posts that I have voted on...")
-    ups, downs = scrape_post_votes(reddit, post_votes["id"])
+    scores = scrape_post_scores(reddit, post_votes["id"])
     # Add the upvotes and downvotes to the dataframe
-    post_votes["Upvotes"] = ups
-    post_votes["Downvotes"] = downs
+    post_votes["Scores"] = scores
 
     # Get flairs
     print("Getting flairs for posts that I have voted on...")
