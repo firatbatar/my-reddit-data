@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    #vis.vega-embed {
+      width: 100%;
+      display: flex;
+    }
+
+    #vis.vega-embed details,
+    #vis.vega-embed details summary {
+      position: relative;
+    }
+  </style>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega-lite@5.15.1"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+</head>
+<body>
+  <div id="vis"></div>
+  <script>
+    (function(vegaEmbed) {
+      var spec = {"config": {"view": {"continuousWidth": 300, "continuousHeight": 300, "stroke": null}, "axisX": {"domainColor": "#000", "domainWidth": 2, "grid": false, "labelFontSize": 11, "titleFontSize": 18}, "axisY": {"domain": false, "grid": false, "labelFontSize": 14, "titleFontSize": 18}, "padding": {"left": 15, "right": 15, "top": 15, "bottom": 15}, "title": {"fontSize": 18}}, "data": {"name": "data-ff5edac15923f772e8ecb234cea181c1"}, "mark": {"type": "bar"}, "encoding": {"color": {"field": "IsSubscribed", "legend": {"labelFontSize": 12, "offset": 0, "orient": "top-right", "title": "Is Subscribed", "titleFontSize": 14}, "scale": {"domain": [true, false], "range": ["#1f77b4", "#ff7f0e"]}, "type": "nominal"}, "tooltip": [{"field": "Count", "type": "quantitative"}, {"field": "Subreddit", "type": "nominal"}], "x": {"axis": {"labelAngle": -45}, "field": "Subreddit", "sort": "-y", "title": "Subreddit", "type": "nominal"}, "y": {"field": "Count", "type": "quantitative"}}, "height": 400, "params": [{"name": "minCount", "select": {"type": "point", "fields": ["minCount"]}, "bind": {"input": "range", "max": 36.0, "min": 1, "name": "Minimum Count", "step": 1}, "value": [{"minCount": 1}]}, {"name": "maxCount", "select": {"type": "point", "fields": ["maxCount"]}, "bind": {"input": "range", "max": 36.0, "min": 1, "name": "Max Count", "step": 1}, "value": [{"maxCount": 36.0}]}], "transform": [{"filter": "((datum.Count >= minCount.minCount) && (datum.Count <= maxCount.maxCount))"}], "width": 1200, "$schema": "https://vega.github.io/schema/vega-lite/v5.15.1.json", "datasets": {"data-ff5edac15923f772e8ecb234cea181c1": [{"Subreddit": "DMAcademy", "Count": 1, "IsSubscribed": false}, {"Subreddit": "ElectroBOOM", "Count": 3, "IsSubscribed": true}, {"Subreddit": "GenP", "Count": 3, "IsSubscribed": false}, {"Subreddit": "GreekMythology", "Count": 3, "IsSubscribed": true}, {"Subreddit": "NintendoDSi", "Count": 4, "IsSubscribed": false}, {"Subreddit": "PercyJacksonMemes", "Count": 2, "IsSubscribed": true}, {"Subreddit": "ProgrammerHumor", "Count": 4, "IsSubscribed": true}, {"Subreddit": "SatisfactoryGame", "Count": 6, "IsSubscribed": true}, {"Subreddit": "TheLastAirbender", "Count": 25, "IsSubscribed": true}, {"Subreddit": "Ubuntu", "Count": 1, "IsSubscribed": true}, {"Subreddit": "algorithms", "Count": 1, "IsSubscribed": false}, {"Subreddit": "bootstrap", "Count": 2, "IsSubscribed": false}, {"Subreddit": "camphalfblood", "Count": 26, "IsSubscribed": true}, {"Subreddit": "consolerepair", "Count": 8, "IsSubscribed": true}, {"Subreddit": "djangolearning", "Count": 3, "IsSubscribed": true}, {"Subreddit": "dndmemes", "Count": 1, "IsSubscribed": false}, {"Subreddit": "flashcarts", "Count": 6, "IsSubscribed": false}, {"Subreddit": "gaming", "Count": 6, "IsSubscribed": true}, {"Subreddit": "mathmemes", "Count": 5, "IsSubscribed": true}, {"Subreddit": "montypython", "Count": 4, "IsSubscribed": true}, {"Subreddit": "movies", "Count": 1, "IsSubscribed": true}, {"Subreddit": "pcbuilding", "Count": 1, "IsSubscribed": false}, {"Subreddit": "programmingmemes", "Count": 1, "IsSubscribed": false}, {"Subreddit": "seinfeld", "Count": 15, "IsSubscribed": true}, {"Subreddit": "startrek", "Count": 21, "IsSubscribed": true}, {"Subreddit": "startrekmemes", "Count": 9, "IsSubscribed": true}, {"Subreddit": "tumblr", "Count": 1, "IsSubscribed": false}, {"Subreddit": "unexpectedpython", "Count": 1, "IsSubscribed": true}, {"Subreddit": "veYakinEvren", "Count": 36, "IsSubscribed": true}, {"Subreddit": "webdev", "Count": 4, "IsSubscribed": false}, {"Subreddit": "yugioh", "Count": 4, "IsSubscribed": true}]}};
+      var embedOpt = {"mode": "vega-lite"};
+
+      function showError(el, error){
+          el.innerHTML = ('<div style="color:red;">'
+                          + '<p>JavaScript Error: ' + error.message + '</p>'
+                          + "<p>This usually means there's a typo in your chart specification. "
+                          + "See the javascript console for the full traceback.</p>"
+                          + '</div>');
+          throw error;
+      }
+      const el = document.getElementById('vis');
+      vegaEmbed("#vis", spec, embedOpt)
+        .catch(error => showError(el, error));
+    })(vegaEmbed);
+
+  </script>
+</body>
+</html>
