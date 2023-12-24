@@ -8,11 +8,18 @@
     <language>en-us</language>
     <atom:link href="http://firatbatar.com/my-reddit-data/analysis/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Logins</title>
+      <title>Daily Activity</title>
       <link>http://firatbatar.com/my-reddit-data/analysis/logins/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://firatbatar.com/my-reddit-data/analysis/logins/</guid>
-      <description>An analysis on the times I logged in to Reddit.</description>
+      <description>An analysis on the date and times I&amp;rsquo;ve logged in to Reddit.</description>
+    </item>
+    <item>
+      <title>My Votes on Reddit</title>
+      <link>http://firatbatar.com/my-reddit-data/analysis/myvotes/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://firatbatar.com/my-reddit-data/analysis/myvotes/</guid>
+      <description>An analysis on my voting behavior on Reddit.</description>
     </item>
   </channel>
 </rss>

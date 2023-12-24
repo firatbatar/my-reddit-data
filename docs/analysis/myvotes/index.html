@@ -11,15 +11,15 @@
     <meta name="author" content="Fırat Batar">
     
 
-    <meta name="description" content="Fırat Batar's Reddit Analysis">
-    <meta name="keywords" content="Fırat Batar, Reddit Analysis, Data Science">
+    <meta name="description" content="Fırat Batar's Reddit Analysis on 'My Votes on Reddit'">
+    <meta name="keywords" content="Fırat Batar, []">
     
-    <meta property="og:title" content="Reddit Analysis">
+    <meta property="og:title" content="My Votes on Reddit">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://firatbatar.com/my-reddit-data/analysis">
-    <meta property="og:site_name" content="firatbatar/my-reddit-data"/>
-    <meta property="og:description" content="Fırat Batar's Reddit Analysis.">
-    
+    <meta property="og:site_name" content="firatbatar/my-reddit-analysis"/>
+    <meta property="og:description" content="Fırat Batar's Reddit Analysis on 'My Votes on Reddit'.">
+
 
 
     
@@ -40,7 +40,7 @@
     
     <script src="/my-reddit-data/jquery/jquery-3.7.1.min.js"></script>
     
-    <title>Analyses</title>
+    <title>My Votes on Reddit</title>
 </head>
 <body class="bg-body-secondary">
     <header class="sticky-top bg-dark" id="header">
@@ -65,7 +65,7 @@
             
             <li class="nav-item ms-2">
                 
-                <a class="nav-link active text-dark-subtle" aria-current="page" href="/my-reddit-data/analysis/">All Analyses</a>
+                <a class="nav-link text-light" href="/my-reddit-data/analysis/">All Analyses</a>
                 
             </li>
             
@@ -119,7 +119,7 @@
                     
                     <li class="nav-item">
                         
-                        <a class="nav-link active text-dark-subtle" aria-current="page" href="/my-reddit-data/analysis/">All Analyses</a>
+                        <a class="nav-link text-light" href="/my-reddit-data/analysis/">All Analyses</a>
                         
                     </li>
                     
@@ -141,41 +141,44 @@
     <main id="main">
         
 
-<h1 class="text-center my-5">Analyses</h1>
+<style>
+    canvas.marks {
+        max-width: 100% !important;
+        height: auto !important;
+    }
 
+    .vega-embed {
+        padding: 0 !important;
+        margin: 0 !important;
+    }
 
-<div class="container mb-4" style="height: fit-content;">
-    <div class="p-3 container-fluid bg-body-tertiary rounded-3 row h-100">
-        <div class="col d-flex flex-column justify-content-between my-3" style="max-height: 100%;">
-            <h2>Daily Activity</h2>
-            <span>
-                An analysis on the date and times I’ve logged in to Reddit.
-            </span>
+    details {
+        display: none;
+    }
 
-            <a href="/my-reddit-data/analysis/logins/" class="btn btn-primary align-self-end">
-                Details
-                <i class="fa-solid fa-caret-right" style="color: #ffffff;"></i>
-            </a>
-        </div>
+    .vega-bind-name {
+        margin-right: 10px;
+    }
+</style>
+
+<div class="container py-5">
+    <h1 class="text-center">My Votes on Reddit</h1>
+
+    <div class="my-5 pb-5">
+        <!-- Styling -->
+<style>
+    .figure {
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+    }
+
+    #total_figure {
+    }
+</style>
+<p>Reddit also provided a dataset of all the votes I&rsquo;ve made on posts and comments. This basically a like/dislike system, where I can upvote or downvote posts and comments. The data also included what I voted on, so I wanted to see if there was any pattern to my voting behavior.</p>
+
     </div>
 </div>
-
-<div class="container mb-4" style="height: fit-content;">
-    <div class="p-3 container-fluid bg-body-tertiary rounded-3 row h-100">
-        <div class="col d-flex flex-column justify-content-between my-3" style="max-height: 100%;">
-            <h2>My Votes on Reddit</h2>
-            <span>
-                An analysis on my voting behavior on Reddit.
-            </span>
-
-            <a href="/my-reddit-data/analysis/myvotes/" class="btn btn-primary align-self-end">
-                Details
-                <i class="fa-solid fa-caret-right" style="color: #ffffff;"></i>
-            </a>
-        </div>
-    </div>
-</div>
-
 
 
     </main>
