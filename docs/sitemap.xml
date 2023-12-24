@@ -11,5 +11,7 @@
     <loc>http://firatbatar.com/my-reddit-data/</loc>
   </url><url>
     <loc>http://firatbatar.com/my-reddit-data/analysis/myvotes/</loc>
+  </url><url>
+    <loc>http://firatbatar.com/my-reddit-data/analysis/commentscoreownership/</loc>
   </url>
 </urlset>

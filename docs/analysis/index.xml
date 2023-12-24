@@ -21,5 +21,12 @@
       <guid>http://firatbatar.com/my-reddit-data/analysis/myvotes/</guid>
       <description>An analysis on my voting behavior on Reddit.</description>
     </item>
+    <item>
+      <title>Score of Comments and Ownership of Their Parent Posts</title>
+      <link>http://firatbatar.com/my-reddit-data/analysis/commentscoreownership/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://firatbatar.com/my-reddit-data/analysis/commentscoreownership/</guid>
+      <description>An analysis on the score of comments and ownership of their parent posts.&amp;quot;</description>
+    </item>
   </channel>
 </rss>

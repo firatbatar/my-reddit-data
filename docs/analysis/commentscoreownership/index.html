@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    
+    
+    <meta name="google" content="nositelinkssearchbox">
+    <meta name="googlebot" content="notranslate">
+    <meta name="author" content="Fırat Batar">
+    
+
+    <meta name="description" content="Fırat Batar's Reddit Analysis on 'Score of Comments and Ownership of Their Parent Posts'">
+    <meta name="keywords" content="Fırat Batar, []">
+    
+    <meta property="og:title" content="Score of Comments and Ownership of Their Parent Posts">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://firatbatar.com/my-reddit-data/analysis">
+    <meta property="og:site_name" content="firatbatar/my-reddit-analysis"/>
+    <meta property="og:description" content="Fırat Batar's Reddit Analysis on 'Score of Comments and Ownership of Their Parent Posts'.">
+
+
+
+    
+    <link rel="stylesheet" href="/my-reddit-data/bootstrap-5/css/bootstrap.min.css">
+
+    
+    
+    <link rel="stylesheet" href="/my-reddit-data/css/style.css">
+
+
+    
+    <script src="/my-reddit-data/bootstrap-5/js/bootstrap.bundle.min.js"></script>
+
+    
+    <script src="https://kit.fontawesome.com/0108cca026.js" crossorigin="anonymous"></script>
+
+    
+    
+    <script src="/my-reddit-data/jquery/jquery-3.7.1.min.js"></script>
+    
+    <title>Score of Comments and Ownership of Their Parent Posts</title>
+</head>
+<body class="bg-body-secondary">
+    <header class="sticky-top bg-dark" id="header">
+    <div class="navbar_wrapper">
+        <nav class="navbar navbar-expand-lg text-light py-3">
+    <div class="container-fluid" id="navbarNav">
+        <a href="/my-reddit-data" class="nav-item nav-link fs-3 fw-bold ms-4">Fırat Batar - Reddit Data Analysis</a>
+        <ul class="navbar-nav ms-auto d-flex flex-row">
+            
+            
+            <li class="nav-item ms-2">
+                
+                <a class="nav-link text-light" href="/my-reddit-data/">Home</a>
+                
+            </li>
+            
+            <li class="nav-item ms-2">
+                
+                <a class="nav-link text-light" href="/my-reddit-data/about/">About</a>
+                
+            </li>
+            
+            <li class="nav-item ms-2">
+                
+                <a class="nav-link text-light" href="/my-reddit-data/analysis/">All Analyses</a>
+                
+            </li>
+            
+
+            
+            <li class="nav-item ms-3">
+                <button id="color-mode-toggle-btn" class="btn btn-link nav-link text-light">
+                    <i id="dark-mode-toggle-icon" class="fa-solid fa-moon"></i>
+                    <i id="light-mode-toggle-icon" class="fa-solid fa-sun"></i>
+                </button>
+            </li>
+            
+        </ul>
+    </div>
+</nav>
+    </div>
+
+    <div class="mobile_sidebar_wrapper">
+        <nav class="navbar navbar-expand-lg text-light py-3">
+    <div class="container-fluid" id="navbarNav">
+        <a href="/my-reddit-data" class="nav-item nav-link fs-3 fw-bold ms-4">Fırat Batar - Reddit Data Analysis</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar"
+            aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
+            <i class="fa-solid fa-bars text-dark-subtle"></i>
+        </button>
+        <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar"
+            aria-labelledby="offcanvasDarkNavbarLabel" style="width: 300px;">
+            <div class="offcanvas-header">
+                <button id="color-mode-toggle-btn-sb" class="nav-item btn btn-link nav-link text-light">
+                    <i id="dark-mode-toggle-icon-sb" class="fa-solid fa-moon"></i>
+                    <i id="light-mode-toggle-icon-sb" class="fa-solid fa-sun"></i>
+                </button>
+                <button type="button" class="btn-close btn-close-white ms-auto" data-bs-dismiss="offcanvas"
+                    aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                    
+                    
+                    <li class="nav-item">
+                        
+                        <a class="nav-link text-light" href="/my-reddit-data/">Home</a>
+                        
+                    </li>
+                    
+                    <li class="nav-item">
+                        
+                        <a class="nav-link text-light" href="/my-reddit-data/about/">About</a>
+                        
+                    </li>
+                    
+                    <li class="nav-item">
+                        
+                        <a class="nav-link text-light" href="/my-reddit-data/analysis/">All Analyses</a>
+                        
+                    </li>
+                    
+                    
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>
+    </div>
+</header>
+
+    <div class="return_to_top" title="Return to Top">
+        <button class="<-3 position-fixed border-0 rounded-circle bg-dark" type="button" id="return_to_top_btn" >
+            <i class="fa-solid fa-up-long text-white"></i>
+        </button>
+    </div>
+
+    <main id="main">
+        
+
+<style>
+    canvas.marks {
+        max-width: 100% !important;
+        height: auto !important;
+    }
+
+    .vega-embed {
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    details {
+        display: none;
+    }
+
+    .vega-bind-name {
+        margin-right: 10px;
+    }
+</style>
+
+<div class="container py-5">
+    <h1 class="text-center">Score of Comments and Ownership of Their Parent Posts</h1>
+
+    <div class="my-5 pb-5">
+        <!-- Styling -->
+<style>
+    .figure {
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+    }
+
+    .figure-grid-wrapper {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    #total_figure {
+    }
+</style>
+<p>One intruiging detail included in the data of the comments that I created was their parent post. I found that intriguing because I also had the data about the posts crated by me which meant that I could analyze if I am the owner of the parent post of my comments.</p>
+<p>While I was looking to the distribution of my votes and created items on the tags, I have realized this: I tend to interact in meme and fandom subreddits. Memes are more dominant in terms of interaction via voting because they are easier to just vote and pass.</p>
+<div class="figure-grid-wrapper" style="gap: 10px;">
+    <div id="voted-tag-count" class="figure" >
+        <figure>
+            
+            
+            
+            
+            
+            <!DOCTYPE html>
+            <html>
+            <head>
+              <style>
+                #vis-tag-count-voted.vega-embed {
+                  width: 100%;
+                  display: flex;
+                }
+            
+                #vis-tag-count-voted.vega-embed details,
+                #vis-tag-count-voted.vega-embed details summary {
+                  position: relative;
+                }
+              </style>
+              <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+              <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega-lite@5.16.3"></script>
+              <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+            </head>
+            <body>
+              <div id="vis-tag-count-voted"></div>
+              <script>
+                (function(vegaEmbed) {
+                  var spec = {"config": {"view": {"continuousWidth": 300, "continuousHeight": 300, "stroke": null}, "axisX": {"domainColor": "#000", "domainWidth": 2, "grid": false, "labelFontSize": 13}, "axisY": {"domain": false, "grid": false, "labelFontSize": 14, "titleFontSize": 18}, "padding": {"left": 15, "right": 15, "top": 15, "bottom": 15}, "title": {"fontSize": 18}}, "data": {"name": "data-c60fceffa849b9ad70a0df8876d1b602"}, "mark": {"type": "bar"}, "encoding": {"color": {"value": "#1f77b4"}, "tooltip": [{"field": "Count", "type": "quantitative"}], "x": {"field": "Count", "type": "quantitative"}, "y": {"field": "Tag", "sort": "-x", "title": null, "type": "nominal"}}, "height": 333.33, "title": "Tags", "width": 500, "$schema": "https://vega.github.io/schema/vega-lite/v5.16.3.json", "datasets": {"data-c60fceffa849b9ad70a0df8876d1b602": [{"Tag": "meme", "Count": 1204}, {"Tag": "fandom", "Count": 853}, {"Tag": "movie/show", "Count": 659}, {"Tag": "game", "Count": 595}, {"Tag": "information/question", "Count": 575}, {"Tag": "discussion", "Count": 237}, {"Tag": "programming", "Count": 199}, {"Tag": "hobby", "Count": 100}]}};
+                  var embedOpt = {"mode": "vega-lite"};
+            
+                  function showError(el, error){
+                      el.innerHTML = ('<div style="color:red;">'
+                                      + '<p>JavaScript Error: ' + error.message + '</p>'
+                                      + "<p>This usually means there's a typo in your chart specification. "
+                                      + "See the javascript console for the full traceback.</p>"
+                                      + '</div>');
+                      throw error;
+                  }
+                  const el = document.getElementById('vis-tag-count-voted');
+                  vegaEmbed("#vis-tag-count-voted", spec, embedOpt)
+                    .catch(error => showError(el, error));
+                })(vegaEmbed);
+            
+              </script>
+            </body>
+            </html>
+
+            <figurecaption>Figure 3.1 - The Number of My Votes by Tag</figurecaption>
+        </figure>
+    </div>
+    <div id="created-tag-count" class="figure">
+        <figure>
+            
+            
+            
+            
+            
+            <!DOCTYPE html>
+            <html>
+            <head>
+              <style>
+                #vis-tag-count-created.vega-embed {
+                  width: 100%;
+                  display: flex;
+                }
+            
+                #vis-tag-count-created.vega-embed details,
+                #vis-tag-count-created.vega-embed details summary {
+                  position: relative;
+                }
+              </style>
+              <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+              <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega-lite@5.16.3"></script>
+              <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+            </head>
+            <body>
+              <div id="vis-tag-count-created"></div>
+              <script>
+                (function(vegaEmbed) {
+                  var spec = {"config": {"view": {"continuousWidth": 300, "continuousHeight": 300, "stroke": null}, "axisX": {"domainColor": "#000", "domainWidth": 2, "grid": false, "labelFontSize": 13}, "axisY": {"domain": false, "grid": false, "labelFontSize": 14, "titleFontSize": 18}, "padding": {"left": 15, "right": 15, "top": 15, "bottom": 15}, "title": {"fontSize": 18}}, "data": {"name": "data-2d6dffccd0aea2888ae1d77adf5e6c89"}, "mark": {"type": "bar"}, "encoding": {"color": {"value": "#1f77b4"}, "tooltip": [{"field": "Count", "type": "quantitative"}], "x": {"field": "Count", "type": "quantitative"}, "y": {"field": "Tag", "sort": "-x", "title": null, "type": "nominal"}}, "height": 333.33, "title": "Tags", "width": 500, "$schema": "https://vega.github.io/schema/vega-lite/v5.16.3.json", "datasets": {"data-2d6dffccd0aea2888ae1d77adf5e6c89": [{"Tag": "fandom", "Count": 106}, {"Tag": "meme", "Count": 86}, {"Tag": "movie/show", "Count": 76}, {"Tag": "information/question", "Count": 51}, {"Tag": "game", "Count": 48}, {"Tag": "discussion", "Count": 37}, {"Tag": "hobby", "Count": 18}, {"Tag": "programming", "Count": 8}]}};
+                  var embedOpt = {"mode": "vega-lite"};
+            
+                  function showError(el, error){
+                      el.innerHTML = ('<div style="color:red;">'
+                                      + '<p>JavaScript Error: ' + error.message + '</p>'
+                                      + "<p>This usually means there's a typo in your chart specification. "
+                                      + "See the javascript console for the full traceback.</p>"
+                                      + '</div>');
+                      throw error;
+                  }
+                  const el = document.getElementById('vis-tag-count-created');
+                  vegaEmbed("#vis-tag-count-created", spec, embedOpt)
+                    .catch(error => showError(el, error));
+                })(vegaEmbed);
+            
+              </script>
+            </body>
+            </html>
+
+            <figurecaption>Figure 3.2 - The Number of My Votes by Tag</figurecaption>
+        </figure>
+    </div>
+</div>
+<p>In a fandom subreddit, for example a subreddit for a specific book series or for a show, people usually discuss heavily about the content of the show or the book. This means that there are more comments and more discussion. Since I have a relatively high creation count in these subreddits, I wondered if I get more interaction <em>for my comments</em> in the posts that I created or others&rsquo;. I have created a visualization to see the distribution of the scores of my comments in the posts that I created and others'.</p>
+<div class="figure-grid-wrapper" style="gap: 10px;">
+    <div id="comment-scores-not-owned" class="figure" >
+        <figure>
+            
+            
+            
+            
+            
+            <!DOCTYPE html>
+            <html>
+            <head>
+              <style>
+                #vis-not-owned.vega-embed {
+                  width: 100%;
+                  display: flex;
+                }
+            
+                #vis-not-owned.vega-embed details,
+                #vis-not-owned.vega-embed details summary {
+                  position: relative;
+                }
+              </style>
+              <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+              <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega-lite@5.16.3"></script>
+              <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+            </head>
+            <body>
+              <div id="vis-not-owned"></div>
+              <script>
+                (function(vegaEmbed) {
+                  var spec = {"config": {"view": {"continuousWidth": 300, "continuousHeight": 300, "stroke": null}, "axisX": {"domainColor": "#000", "domainWidth": 2, "grid": false, "labelFontSize": 14, "titleFontSize": 14}, "axisY": {"grid": false, "labelFontSize": 14, "titleFontSize": 14}, "padding": {"left": 15, "right": 15, "top": 15, "bottom": 15}, "title": {"fontSize": 18}}, "data": {"name": "data-42106682b8c67e183d79d369c716c9b1"}, "mark": {"type": "bar"}, "encoding": {"tooltip": [{"aggregate": "count", "type": "quantitative"}], "x": {"bin": true, "field": "Score", "title": "Score", "type": "quantitative"}, "y": {"aggregate": "count", "type": "quantitative"}}, "height": 300, "title": "Scores of Comments on not Owned Posts", "width": 600, "$schema": "https://vega.github.io/schema/vega-lite/v5.16.3.json", "datasets": {"data-42106682b8c67e183d79d369c716c9b1": [{"IsPostOwned": 0, "Score": 4}, {"IsPostOwned": 0, "Score": 1}, {"IsPostOwned": 0, "Score": 2}, {"IsPostOwned": 0, "Score": 1}, {"IsPostOwned": 0, "Score": 2}, {"IsPostOwned": 0, "Score": 1}, {"IsPostOwned": 0, "Score": 1}, {"IsPostOwned": 0, "Score": 5}, {"IsPostOwned": 0, "Score": 3}, {"IsPostOwned": 0, "Score": -2}, {"IsPostOwned": 0, "Score": 14}, {"IsPostOwned": 0, "Score": 6}, {"IsPostOwned": 0, "Score": 15}, {"IsPostOwned": 0, "Score": 1}, {"IsPostOwned": 0, "Score": 1}, {"IsPostOwned": 0, "Score": 14}, {"IsPostOwned": 0, "Score": 8}, {"IsPostOwned": 0, "Score": 23}, {"IsPostOwned": 0, "Score": 1}, {"IsPostOwned": 0, "Score": 2}, {"IsPostOwned": 0, "Score": 1}, {"IsPostOwned": 0, "Score": 2}, {"IsPostOwned": 0, "Score": 6}, {"IsPostOwned": 0, "Score": 1}, {"IsPostOwned": 0, "Score": 1}, {"IsPostOwned": 0, "Score": 1}, {"IsPostOwned": 0, "Score": 12}, {"IsPostOwned": 0, "Score": 1}, {"IsPostOwned": 0, "Score": 2}, {"IsPostOwned": 0, "Score": 1}, {"IsPostOwned": 0, "Score": 1}, {"IsPostOwned": 0, "Score": 20}, {"IsPostOwned": 0, "Score": 3}, {"IsPostOwned": 0, "Score": 1}, {"IsPostOwned": 0, "Score": 14}, {"IsPostOwned": 0, "Score": 1}, {"IsPostOwned": 0, "Score": 2}, {"IsPostOwned": 0, "Score": 3}, {"IsPostOwned": 0, "Score": 1}, {"IsPostOwned": 0, "Score": 7}, {"IsPostOwned": 0, "Score": 1}, {"IsPostOwned": 0, "Score": 2}, {"IsPostOwned": 0, "Score": 2}, {"IsPostOwned": 0, "Score": 9}, {"IsPostOwned": 0, "Score": 4}, {"IsPostOwned": 0, "Score": 1}, {"IsPostOwned": 0, "Score": 1}, {"IsPostOwned": 0, "Score": 3}, {"IsPostOwned": 0, "Score": 12}, {"IsPostOwned": 0, "Score": 89}, {"IsPostOwned": 0, "Score": 1}, {"IsPostOwned": 0, "Score": 170}, {"IsPostOwned": 0, "Score": 2}, {"IsPostOwned": 0, "Score": 9}, {"IsPostOwned": 0, "Score": 3}, {"IsPostOwned": 0, "Score": 1}, {"IsPostOwned": 0, "Score": 2}, {"IsPostOwned": 0, "Score": 10}, {"IsPostOwned": 0, "Score": 1}, {"IsPostOwned": 0, "Score": 2}, {"IsPostOwned": 0, "Score": 10}, {"IsPostOwned": 0, "Score": 6}, {"IsPostOwned": 0, "Score": 0}, {"IsPostOwned": 0, "Score": 8}, {"IsPostOwned": 0, "Score": 1}, {"IsPostOwned": 0, "Score": 6}, {"IsPostOwned": 0, "Score": 51}, {"IsPostOwned": 0, "Score": 1}, {"IsPostOwned": 0, "Score": 8}, {"IsPostOwned": 0, "Score": 3}, {"IsPostOwned": 0, "Score": 1}, {"IsPostOwned": 0, "Score": 2}, {"IsPostOwned": 0, "Score": 8}, {"IsPostOwned": 0, "Score": 1}, {"IsPostOwned": 0, "Score": 6}, {"IsPostOwned": 0, "Score": 6}, {"IsPostOwned": 0, "Score": -1}, {"IsPostOwned": 0, "Score": 1}, {"IsPostOwned": 0, "Score": 2}, {"IsPostOwned": 0, "Score": 1}, {"IsPostOwned": 0, "Score": 1}, {"IsPostOwned": 0, "Score": 7}, {"IsPostOwned": 0, "Score": 2}, {"IsPostOwned": 0, "Score": 2}, {"IsPostOwned": 0, "Score": 2}, {"IsPostOwned": 0, "Score": 112}, {"IsPostOwned": 0, "Score": 1}, {"IsPostOwned": 0, "Score": 1}, {"IsPostOwned": 0, "Score": 4}, {"IsPostOwned": 0, "Score": 40}, {"IsPostOwned": 0, "Score": 1}, {"IsPostOwned": 0, "Score": 22}, {"IsPostOwned": 0, "Score": 2}, {"IsPostOwned": 0, "Score": 2}, {"IsPostOwned": 0, "Score": 1}, {"IsPostOwned": 0, "Score": 5}, {"IsPostOwned": 0, "Score": 2}, {"IsPostOwned": 0, "Score": 2}, {"IsPostOwned": 0, "Score": 1}, {"IsPostOwned": 0, "Score": 1}, {"IsPostOwned": 0, "Score": 1}, {"IsPostOwned": 0, "Score": 3}, {"IsPostOwned": 0, "Score": 1}, {"IsPostOwned": 0, "Score": 1}, {"IsPostOwned": 0, "Score": 1}, {"IsPostOwned": 0, "Score": 35}, {"IsPostOwned": 0, "Score": 4}, {"IsPostOwned": 0, "Score": 5}, {"IsPostOwned": 0, "Score": 4}, {"IsPostOwned": 0, "Score": 3}, {"IsPostOwned": 0, "Score": 8}, {"IsPostOwned": 0, "Score": 30}, {"IsPostOwned": 0, "Score": 1}, {"IsPostOwned": 0, "Score": 3}, {"IsPostOwned": 0, "Score": 3}, {"IsPostOwned": 0, "Score": 1}, {"IsPostOwned": 0, "Score": 16}, {"IsPostOwned": 0, "Score": 1}, {"IsPostOwned": 0, "Score": 3}, {"IsPostOwned": 0, "Score": 4}, {"IsPostOwned": 0, "Score": 1}, {"IsPostOwned": 0, "Score": 2}, {"IsPostOwned": 0, "Score": 5}, {"IsPostOwned": 0, "Score": 30}, {"IsPostOwned": 0, "Score": 2}, {"IsPostOwned": 0, "Score": 1}, {"IsPostOwned": 0, "Score": 3}, {"IsPostOwned": 0, "Score": 1}, {"IsPostOwned": 0, "Score": -1}, {"IsPostOwned": 0, "Score": 2}, {"IsPostOwned": 0, "Score": 1}, {"IsPostOwned": 0, "Score": 1}, {"IsPostOwned": 0, "Score": 2}]}};
+                  var embedOpt = {"mode": "vega-lite"};
+            
+                  function showError(el, error){
+                      el.innerHTML = ('<div style="color:red;">'
+                                      + '<p>JavaScript Error: ' + error.message + '</p>'
+                                      + "<p>This usually means there's a typo in your chart specification. "
+                                      + "See the javascript console for the full traceback.</p>"
+                                      + '</div>');
+                      throw error;
+                  }
+                  const el = document.getElementById('vis-not-owned');
+                  vegaEmbed("#vis-not-owned", spec, embedOpt)
+                    .catch(error => showError(el, error));
+                })(vegaEmbed);
+            
+              </script>
+            </body>
+            </html>
+
+            <figurecaption>Figure 3.3 - The Scores of My Comments Under Others' Posts</figurecaption>
+        </figure>
+    </div>
+    <div id="comment-scores-owned" class="figure">
+        <figure>
+            
+            
+            
+            
+            
+            <!DOCTYPE html>
+            <html>
+            <head>
+              <style>
+                #vis-owned.vega-embed {
+                  width: 100%;
+                  display: flex;
+                }
+            
+                #vis-owned.vega-embed details,
+                #vis-owned.vega-embed details summary {
+                  position: relative;
+                }
+              </style>
+              <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+              <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega-lite@5.16.3"></script>
+              <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+            </head>
+            <body>
+              <div id="vis-owned"></div>
+              <script>
+                (function(vegaEmbed) {
+                  var spec = {"config": {"view": {"continuousWidth": 300, "continuousHeight": 300, "stroke": null}, "axisX": {"domainColor": "#000", "domainWidth": 2, "grid": false, "labelFontSize": 14, "titleFontSize": 14}, "axisY": {"grid": false, "labelFontSize": 14, "titleFontSize": 14}, "padding": {"left": 15, "right": 15, "top": 15, "bottom": 15}, "title": {"fontSize": 18}}, "data": {"name": "data-a2cc2edfabbe33014571edab0be3c0dd"}, "mark": {"type": "bar"}, "encoding": {"tooltip": [{"aggregate": "count", "type": "quantitative"}], "x": {"bin": true, "field": "Score", "title": "Score", "type": "quantitative"}, "y": {"aggregate": "count", "type": "quantitative"}}, "height": 300, "title": "Scores of Comments on Owned Posts", "width": 600, "$schema": "https://vega.github.io/schema/vega-lite/v5.16.3.json", "datasets": {"data-a2cc2edfabbe33014571edab0be3c0dd": [{"IsPostOwned": 1, "Score": 7}, {"IsPostOwned": 1, "Score": 1}, {"IsPostOwned": 1, "Score": 11}, {"IsPostOwned": 1, "Score": 2}, {"IsPostOwned": 1, "Score": 1}, {"IsPostOwned": 1, "Score": 1}, {"IsPostOwned": 1, "Score": 1}, {"IsPostOwned": 1, "Score": 5}, {"IsPostOwned": 1, "Score": 3}, {"IsPostOwned": 1, "Score": 17}, {"IsPostOwned": 1, "Score": 1}, {"IsPostOwned": 1, "Score": 1}, {"IsPostOwned": 1, "Score": 3}, {"IsPostOwned": 1, "Score": 1}, {"IsPostOwned": 1, "Score": 1}, {"IsPostOwned": 1, "Score": 1}, {"IsPostOwned": 1, "Score": 1}, {"IsPostOwned": 1, "Score": 3}, {"IsPostOwned": 1, "Score": 1}, {"IsPostOwned": 1, "Score": 2}, {"IsPostOwned": 1, "Score": 1}, {"IsPostOwned": 1, "Score": 1}, {"IsPostOwned": 1, "Score": 2}, {"IsPostOwned": 1, "Score": 1}, {"IsPostOwned": 1, "Score": 1}, {"IsPostOwned": 1, "Score": 3}, {"IsPostOwned": 1, "Score": 1}, {"IsPostOwned": 1, "Score": 3}, {"IsPostOwned": 1, "Score": 1}, {"IsPostOwned": 1, "Score": 1}, {"IsPostOwned": 1, "Score": 3}, {"IsPostOwned": 1, "Score": 16}, {"IsPostOwned": 1, "Score": 4}, {"IsPostOwned": 1, "Score": 48}, {"IsPostOwned": 1, "Score": 5}, {"IsPostOwned": 1, "Score": 3}, {"IsPostOwned": 1, "Score": 4}, {"IsPostOwned": 1, "Score": 1}, {"IsPostOwned": 1, "Score": 2}, {"IsPostOwned": 1, "Score": 1}, {"IsPostOwned": 1, "Score": 13}, {"IsPostOwned": 1, "Score": 8}, {"IsPostOwned": 1, "Score": 5}, {"IsPostOwned": 1, "Score": 1}, {"IsPostOwned": 1, "Score": 1}]}};
+                  var embedOpt = {"mode": "vega-lite"};
+            
+                  function showError(el, error){
+                      el.innerHTML = ('<div style="color:red;">'
+                                      + '<p>JavaScript Error: ' + error.message + '</p>'
+                                      + "<p>This usually means there's a typo in your chart specification. "
+                                      + "See the javascript console for the full traceback.</p>"
+                                      + '</div>');
+                      throw error;
+                  }
+                  const el = document.getElementById('vis-owned');
+                  vegaEmbed("#vis-owned", spec, embedOpt)
+                    .catch(error => showError(el, error));
+                })(vegaEmbed);
+            
+              </script>
+            </body>
+            </html>
+
+            <figurecaption>Figure 3.4 - The Scores of My Comments Under My Posts</figurecaption>
+        </figure>
+    </div>
+</div>
+<p>In order to test my question, I have formed the following hypotheses:<br>
+<strong>Null Hypothesis</strong>: There is no correlation between the ownership of the post and the score of my comment.<br>
+<strong>Alternative Hypothesis</strong>: There is a correlation between the ownership of the post and the score of my comment.</p>
+<p>Since one way to measure activity is the interaction with the content, I have decided to use the score of the comments as a measure of activity. I have applied <strong><em>t-test</em></strong> with a significance level of <strong>0.05</strong> to test my hypotheses.<br>
+The test resulted in a p-value of <strong>0.11</strong> which is higher than the significance level. Therefore, I have <strong>failed to reject the null hypothesis</strong>. This means that there is no significant difference between the scores of my comments under my posts and others'.</p>
+<p>However, it is worth noting that there is a somewhat significant difference between the number of comments under my posts and others&rsquo;. Only <strong>45</strong> of my comments are under my posts while <strong>133</strong> of them are under others'.</p>
+
+    </div>
+</div>
+
+
+    </main>
+
+    
+    
+    <script src="/my-reddit-data/js/colormode_script.js"></script>   
+    
+    <script src="/my-reddit-data/js/return_to_top_script.js"></script>
+
+    <footer class="d-flex flex-column justify-content-center align-items-center bg-dark">
+    
+    <div class="contact-links my-4">
+        <a href="https://github.com/firatbatar" target="_blank" rel="noopener noreferrer">
+            <i class="fa-brands fa-github fa-2xl text-dark-subtle"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/f%c4%b1rat-batar-a22695221/" target="_blank" rel="noopener noreferrer">
+            <i class="fa-brands fa-linkedin fa-2xl text-dark-subtle" style="color: #0077b5;"></i>
+        </a>
+    </div>
+
+    
+    <div class="made-with-hugo my-3">
+        <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" class="text-decoration-none text-dark-subtle">
+            
+            <img src="/my-reddit-data/images/hugo-icon.png" alt="Hugo Logo">
+            Made with Hugo
+        </a>
+    </div>
+    
+    
+    <div class="my-website-link">
+        <a href="https://firatbatar.com" target="_blank" rel="noopener noreferrer" class="text-dark-subtle" style="text-decoration: none;">
+            My Website
+        </a>
+    </div>
+
+    
+    <div class="copy-rights my-1">
+        <p class="text-dark-subtle">&copy; 2023 Fırat Batar</p>
+    </div>
+</footer>
+</body>
+
+</html>
