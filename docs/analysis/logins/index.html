@@ -640,8 +640,9 @@
     monday_tab.classList.add("show");
     monday_tab.classList.add("active");
 </script>
+<br/>
 <h2 id="hypothesis-testing">Hypothesis Testing</h2>
-<p>In general sense my hypothesis is that <strong>I am more likely to login to Reddit during my class times.</strong> To test this hypothesis, I have used the following steps:</p>
+<p>If we need to put in a general way, my hypothesis is that <strong>I am more likely to login to Reddit during my class times.</strong> To test this hypothesis, I have used the following steps:</p>
 <ol>
 <li>
 <p>Form a null hypothesis and an alternative hypothesis.<br>
@@ -690,6 +691,7 @@ Compared to other days friday has the lowest p-value which means that the signif
 <p>My guess is that as seen from the aggregate plot, I am more active in the afternoon and evening, so without class hours weekends should also show an activity peak in the afternoon and evening. So I have hypothesized that <strong>the activity distributions must be close to a normal distribution with a peak in the afternoon.</strong></p>
 <p>To test this hypothesis, I have used a distribution fitting test from <a href="https://github.com/erdogant/distfit"><em>distfit</em></a> library. I have tested against some simple distributions such as normal, uniform, and beta. Getting the following results in the graph below. (Note that the x-axis shows the time in minutes)</p>
 <div style="margin-top: 2rem; margin-bottom: 1rem;">
+    <figure>
     
     
     
@@ -699,6 +701,8 @@ Compared to other days friday has the lowest p-value which means that the signif
     <img src="/my-reddit-data/figures/logins/weekends_pdf_fit.png" width="1200" height="600">
     
 
+    <figcaption>Figure 1.9 - Weekend Activity Distribution Fitting</figcaption>
+    </figure>
 </div>
 <p>I have isolated these three theorethical distributions because they are the ones that I want to compare in a general sense, even though there were other fits between normal and uniform for example. However, <strong>beta distribution is the one that fits the best</strong>. Which means that the activity is a <strong>right scewed distribution</strong> with a <strong>peak around 16:00-17:00</strong>. Therefore, my hypothesis seems to be correct and the activity is more likely to be in the afternoon and evening.</p>
 
