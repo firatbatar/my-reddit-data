@@ -149,34 +149,71 @@
 <p><strong><em>For all the details and the source code of the project, please visit the <a style="text-decoration: none;" href="https://github.com/firatbatar/my-reddit-data" target="_blank">GitHub repository</a>.</em></strong></p>
 <h2 id="description">Description</h2>
 <p>Sabancı University CS210 Intorduction to Data Scince Course Fall 2023-2024 Term Project.<br>
-This project will be an analysis on my own <a href="https://www.reddit.com/">Reddit</a> usage.</p>
+This project will be an analysis on my own <a href="https://www.reddit.com/" target="_blank">Reddit</a> usage.</p>
 <h2 id="motivation">Motivation</h2>
 <p>While thinking about a project I thought I might analyze my interaction with outside world which is done mostly through social media. Since Reddit is my primary social media platform, I decided to go with that.<br>
 The motivation of this analysis is to gain a deeper understanding of my own Reddit usage patterns. By analyzing the subreddits I&rsquo;m subscribed to, when I am active in Reddit, and my engagement with posts and comments, I aim to gain insights into my online behavior and interests.</p>
+<h3 id="tools">Tools</h3>
+<p><strong><a href="https://jupyter.org/">Jupyter Notebook</a>:</strong> Used for coding and documentation.<br>
+<strong><a href="https://pandas.pydata.org/">Pandas</a>:</strong> Used for data cleaning, filtering, and structuring.<br>
+<strong><a href="https://altair-viz.github.io/index.html">Altair</a>:</strong> Mainly employed for exploratory data analysis (EDA) and interactive visualizations.<br>
+<strong><a href="https://matplotlib.org/">Matplotlib</a> and <a href="https://seaborn.pydata.org/">Seaborn</a>:</strong> Supplementary for visualizations if needed.<br>
+<strong><a href="https://numpy.org/">Numpy</a>:</strong> Used for mathematical operations.<br>
+<strong><a href="https://www.scipy.org/">Scipy</a>:</strong> Used for statistical analysis.<br>
+<strong><a href="https://github.com/erdogant/distfit">distfit</a></strong> Used for distribution fitting.</p>
 <h2 id="data-source">Data Source</h2>
-<p>The data for this analysis is coming from my own Reddit account. I&rsquo;ve <a href="https://www.reddit.com/settings/data-request">Reddit Data Request</a> and used <a href="https://www.reddit.com/dev/api/">Reddit API</a>, following <a href="https://github.com/reddit/reddit/wiki/API">Reddit&rsquo;s API rules</a>, to collect the data.</p>
-<h3 id="the-data-includes">The Data Includes</h3>
+<p>I have two main sources of data:</p>
+<ul>
+<li>Data that is directly exported from Reddit as a personal <a href="https://www.reddit.com/settings/data-request">data request</a>.</li>
+<li>Data that is scrapped using <a href="https://www.reddit.com/dev/api/">Reddit API</a> through a simple Python script using <a href="https://github.com/praw-dev/praw">PRAW</a> package, following <a href="https://github.com/reddit/reddit/wiki/API">Reddit&rsquo;s API rules</a>. Script is available in <code>reddit_api_scraping.py</code> file.</li>
+</ul>
+<p>In addition to these two, in order to create a general content type system for subreddits, I have created a Google Form to get &ldquo;tags&rdquo; annotated by human. I wrote a Apps Script to automatically create a Google Form automatically from the data. Form is available <a href="https://forms.gle/cKnMTpAyFxGkHKVy5">here</a>. I have collected <strong>7</strong> responses from my friends. I have basically selected the most common tags three tags for each subreddit but I have applied some more filtering. For details see <code>reddit_api_scraping.py</code> file.</p>
+<h3 id="requested-data">Requested data</h3>
+<p>Requested data is in .csv format and contains:</p>
 <ul>
 <li>Subscribed subreddits</li>
 <li>Login history</li>
 <li>Voted posts and comments</li>
 <li>Created posts and comments</li>
-<li>The score for each post and comment</li>
-<li>Available submission flairs for each subreddit (if exists)</li>
-<li>Flairs of each post (if exists)</li>
 </ul>
-<h2 id="data-analysis-and-findings">Data Analysis and Findings</h2>
-<p>After cleaning and structuring the data, I analyzed my Reddit usage in different ways. The results of the analysis can be found at the <a href="https://firatbatar.com/my-reddit-data/analysis/">analyses page</a>.</p>
-<h2 id="limitations-and-future-work">Limitations and Future Work</h2>
-<!-- Template from ChatGPT
-Limitations
-Data Completeness: Reliability of data collected through APIs and personal data requests might have limitations or missing elements.
-Subjectivity: Human annotations may have subjective biases affecting the accuracy of subreddit tags and flairs.
-Future Work
-Enhanced Data Collection: Implement improved methods to collect more comprehensive and accurate data, reducing missing elements.
-Advanced Analysis Techniques: Explore machine learning or advanced analytical methods for deeper insights into behavior patterns.
-Longitudinal Analysis: Conduct analysis over a more extended period to observe changes in behavior and interests over time
--->
+<h3 id="reddit-api">Reddit API</h3>
+<p>Using Reddit API, I scrapped the following data:</p>
+<ul>
+<li>The score (net upvotes) for each post and comment that I have voted.</li>
+<li>The score of each post and comment that I have created.</li>
+<li>The same script also combines annotated data with the raw data.</li>
+</ul>
+<p>Requested data is read by scraper script and after scrapping, it is saved as new .csv files.</p>
+<p>Then the data is processed in <code>data_process.ipynb</code> file. Process includes cleaning and structuring the data. For details on every step for each different group of data see the file.</p>
+<h3 id="data-visualizations">Data Visualizations</h3>
+<p>Almost all the visualizations, the ones that are spesisific to an analysis are not here, are made in <code>data_visualization.ipynb</code> file. During the EDA, I have created many visualizations to understand the data better and to come up with interesting questions. Not all the visualizations are used and included in the final report. However, all can be found in the notebook.</p>
+<p>I have used Altair for most of the visualizations. Altair is a declarative statistical visualization library for Python, based on Vega. I used Altair because it is very easy to use and it is very powerful, I wanted to create all my visualizations interactive so that EDA and final report is more clear and iteresting.</p>
+<h3 id="data-analysis">Data Analysis</h3>
+<p>All the analysis is done in <code>data_analysis.ipynb</code> file. Notebook is structered and commented in a way that it can be followed easily. In addition to the statistical tests, the notebook also includes some of the visualizations that are used in the report. Again (almost) all the visualizations are made using Altair and they are interactive.</p>
+<p>The details of the analysis can be found in the notebook, but the final report is in <a href="https://firatbatar.com/my-reddit-usage">this webiste</a>.</p>
+<h2 id="findings">Findings</h2>
+<p><em>For the detailed findings, please visit the <a href="https://firatbatar.com/my-reddit-usage/analysis">report</a>.</em></p>
+<p>Through this analysis, I discovered:</p>
+<ul>
+<li>Patterns in my Reddit usage times and correlations with my class schedule.</li>
+<li>Voting patterns on posts/comments, including preferences based on subreddits and their tags.</li>
+<li>Self-reflection on my own contributions through posts/comments and their respective subreddits and tags.</li>
+<li>The factors that affect the way I interact in Reddit.</li>
+<li>How I start, join, and contribute to discussions on Reddit.</li>
+</ul>
+<h2 id="limitations">Limitations</h2>
+<p>The limitations can be generally seperated into two categories:</p>
+<h3 id="data-sourced-limitations">Data Sourced Limitations</h3>
+<p><strong>Data Completeness:</strong> Considering my time on Reddit and the way I interact with data is somewhat limited, the data stays a bit short for some the possible analysis.<br>
+<strong>Subjectivity:</strong> Like I have stated Reddit does not have a native system to classify subreddit. Even though I tried to solve this using human annotators, they may have subjective biases affecting the accuracy of subreddit tags.</p>
+<h3 id="personal-limitations">Personal Limitations</h3>
+<p><strong>Privacy:</strong> Since the project is based on a personal data, I have to be careful about the privacy of the data. There were some details that I did not want to share, so I did not used them in the analysis.<br>
+<strong>Knowledge:</strong> Especially in the first stages of the project, I did not have enough knowledge about data science and data analysis. So, even though I tried to improve the project and the analysis as I learned more, there are still some parts inherited from the early stages of the project and some parts that I could not improve. With more knowledge and experience, and some knowledge about machine learning, I believe the project can be improved.</p>
+<h2 id="future-work">Future Work</h2>
+<p><strong>Longitudinal Analysis:</strong> Since data is on my usage of a social media plotform, the analysis can be updated with newer data over a more extended period to observe changes in behavior and interests over time.<br>
+<strong>Advanced Analysis Techniques:</strong> With more knowledge and experience on data science and machine learning, if I continue to take courses on the subject, I might return and improve some things that I am not able to do now.<br>
+<strong>Final Report Website:</strong> I have created a website for the final report. However, due to my limited knowledge especially on using Altair, I could not create the website as detailed as I wanted and combine with interactive visualizations. I believe there is some room for improvement there.</p>
+
     </div>
 </div>
     
