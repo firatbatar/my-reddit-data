@@ -2,18 +2,18 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>http://firatbatar.com/my-reddit-data/analysis/logins/</loc>
+  </url><url>
+    <loc>http://firatbatar.com/my-reddit-data/analysis/myvotes/</loc>
+  </url><url>
+    <loc>http://firatbatar.com/my-reddit-data/analysis/votedandcreated/</loc>
+  </url><url>
+    <loc>http://firatbatar.com/my-reddit-data/analysis/commentscoreownership/</loc>
+  </url><url>
     <loc>http://firatbatar.com/my-reddit-data/about/</loc>
   </url><url>
     <loc>http://firatbatar.com/my-reddit-data/analysis/</loc>
   </url><url>
-    <loc>http://firatbatar.com/my-reddit-data/analysis/logins/</loc>
-  </url><url>
     <loc>http://firatbatar.com/my-reddit-data/</loc>
-  </url><url>
-    <loc>http://firatbatar.com/my-reddit-data/analysis/votedandcreated/</loc>
-  </url><url>
-    <loc>http://firatbatar.com/my-reddit-data/analysis/myvotes/</loc>
-  </url><url>
-    <loc>http://firatbatar.com/my-reddit-data/analysis/commentscoreownership/</loc>
   </url>
 </urlset>

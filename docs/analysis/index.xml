@@ -15,18 +15,18 @@
       <description>An analysis on the date and times I&amp;rsquo;ve logged in to Reddit.</description>
     </item>
     <item>
-      <title>My Type of Activity on Reddit</title>
-      <link>http://firatbatar.com/my-reddit-data/analysis/votedandcreated/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://firatbatar.com/my-reddit-data/analysis/votedandcreated/</guid>
-      <description>An analysis on two different type of my activity, content creation and content voting, on Reddit.</description>
-    </item>
-    <item>
       <title>My Votes on Reddit</title>
       <link>http://firatbatar.com/my-reddit-data/analysis/myvotes/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://firatbatar.com/my-reddit-data/analysis/myvotes/</guid>
       <description>An analysis on my voting behavior on Reddit.</description>
+    </item>
+    <item>
+      <title>My Type of Activity on Reddit</title>
+      <link>http://firatbatar.com/my-reddit-data/analysis/votedandcreated/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://firatbatar.com/my-reddit-data/analysis/votedandcreated/</guid>
+      <description>An analysis on two different type of my activity, content creation and content voting, on Reddit.</description>
     </item>
     <item>
       <title>Score of Comments and Ownership of Their Parent Posts</title>
