@@ -189,18 +189,18 @@
         margin-top: 0;
     }
 </style>
-<p>In general we can say that there are two main types of activity on Reddit: <strong>creating a new content or interacting with someone else&rsquo;s existing content.</strong> Even though one could argue that commenting on someone else&rsquo;s post is also a type of interaction, I will count it as a content creation because it is a new content on its own that has it&rsquo;s on seperate score and comments, etc. Therefore, I will focus on the <strong>posts and comments that I have created and the posts and comments that I have voted on.</strong></p>
-<p>In the light of the data I have collected I wanted to compare these from different perspectives. After some exploration, I have decided to focus on the following questions:</p>
+<p>In general we can say that there are two main types of activity on Reddit: <strong>creating a new content or interacting with someone else&rsquo;s existing content.</strong> Even though one could argue that commenting on someone else&rsquo;s post is also a type of interaction with an existing content, for the sake of simplicity in this particular analysis I will count it as a content creation because it is a new content on its own that has it&rsquo;s on seperate score and sub-comments. Therefore, I will focus on the <strong>posts and comments that I have created and the posts and comments that I have voted on.</strong></p>
+<p>In the light of the data I have collected I wanted to compare these two types of activity in terms of <em>what affects me to do make one type and not the other</em>. After some exploration, I have decided to focus on the following three questions:</p>
 <ol>
 <li>Does the subreddit itself have any effect on the type of my activity?</li>
-<li>Does the type of a subreddit (tags) have any effect on the type of my activity?</li>
+<li>Does the type of a subreddit, or its tags, have any effect on the type of my activity?</li>
 <li>Is there significant difference between me voting or creating on a subreddit that I am not subscribed to?</li>
 </ol>
 <br/>
 <br/>
 <h2 id="the-subreddits">The Subreddits</h2>
-<p>First, let&rsquo;s take a look at the subreddits that I have interacted with. I want to see if there is any connection between the subreddits I have interacted with and the type of my activity and if there is any significant difference between the subreddits that I create content on and the subreddits that I vote on. So I want to test the following hypotheses:<br>
-<strong>Null Hypothesis:</strong> The subreddit and the type of my activity are independent.
+<p>First, let&rsquo;s take a look at the subreddits that I have interacted with. I want to see if there is any connection between the subreddits I have interacted with and the type of my activity and if there is any significant difference between the subreddits that I create content on and the subreddits that I vote on. I want to test the following hypotheses:<br>
+<strong>Null Hypothesis:</strong> The subreddit and the type of my activity are independent.<br>
 <strong>Alternative Hypothesis:</strong> The subreddit and the type of my activity are dependent.</p>
 <div id="subreddits_figure" class="figure">
     <figure>
@@ -254,8 +254,8 @@
         <figcaption>Figure 4.1 - Created and Voted Counts by Subreddits</figcaption>
     </figure>
 </div>
-<p>After combining &ldquo;created&rdquo; and &ldquo;voted&rdquo; data in a crosstable, I have perfomed a <strong><em>Chi-Square Test</em></strong> against a significance level of <em>0.05</em>. The test resulted in a p-value of <strong><em>1.39E-11</em></strong> which is way below the significance level. So, the test result rejects the null hypothesis and says that the subreddit and the type of my activity are dependent. However, as we can see from the figure, the number of <em>vote</em> interactions are way higher than the number of <em>create</em> interactions. So, additionally I have also calculated Cramer&rsquo;s V to see the strength of the relationship. The result was <strong><em>0.214</em></strong> which is a moderate strength.</p>
-<p>I also wanted to see the relationship between <em>voted</em> count and <em>created</em> count for each subreddit. The following figure shows the ratio of <em>voted</em> and total count for subreddits. Note that the figure is sorted by the total number of interactions.</p>
+<p>After combining <em>&ldquo;created&rdquo;</em> and <em>&ldquo;voted&rdquo;</em> data in a crosstable, I have perfomed a <strong><em>Chi-Square Test</em></strong> against a significance level of <strong>0.05</strong>. The test resulted in a p-value of <strong><em>1.39E-11</em></strong> which is way below the significance level. So, the test result rejects the null hypothesis and says that the subreddit and the type of my activity are dependent. However, as we can see from the figure, the number of <em>&ldquo;vote&rdquo;</em> interactions are way higher than the number of <em>&ldquo;create&rdquo;</em> interactions. So, additionally I have also calculated Cramer&rsquo;s V to see the strength of the relationship. The result was <strong><em>0.214</em></strong> which shows a moderate strength.</p>
+<p>I also wanted to see the relationship between <em>&ldquo;voted&rdquo;</em> count and <em>&ldquo;created&rdquo;</em> count for each subreddit. The following figure shows the ratio of <em>voted</em> and total count for subreddits. Note that the figure is sorted by the total number of interactions.</p>
 <p style="margin-top: 2rem; margin-bottom: 0;"><i>Slider can be used to hide/show subreddits according to minimum number of total interactions.</i></p>
 <div class="figure-grid-wrapper" style="margin-top: 0.25rem;">
     <div id="subreddits_ratio_figure" class="figure">
@@ -313,18 +313,20 @@
     <div class="figure-side-text" style="margin-top: 0; max-width: 30% !important;">
         <p>
             This figure also clearly displays the sheer size difference between the two type. However, now we can see some interesting details. It is clear that as the number of interactions decrease I tend to just vote. Probably these are subs that I am not active or even subbed to such as <a href="https://reddit.com/r/meirl" target="_blank">r/meirl</a>.
-            However, there some subreddits that are noticably close to a 0.5 ratio (excluding the ones with very low number of interactions) such as <a href="https://reddit.com/r/flashcarts" target="_blank">r/flashcarts</a>, <a href="https://reddit.com/r/NintendoDSi" target="_blank">r/NintendoDSi</a>, and <a href="https://reddit.com/r/webdev" target="_blank">r/webdev</a> which all are mainly <i>ask question/give answer</i> type of subreddits. This might be because I tend to ask questions or make comments on these subreddits rather then voting and passing. I also found it interesting that <i><strong>I am not subscribed to any of these three subreddits</strong></i>.
+        </p>
+        <p>
+            However, there some subreddits that are noticably close to a 0.5 ratio (excluding the ones with very low number of interactions) such as <a href="https://reddit.com/r/flashcarts" target="_blank">r/flashcarts</a>, <a href="https://reddit.com/r/NintendoDSi" target="_blank">r/NintendoDSi</a>, and <a href="https://reddit.com/r/webdev" target="_blank">r/webdev</a> which all are mainly <i>ask question/give answer</i> type of subreddits. This might be because I tend to ask questions or make comments on these subreddits rather then voting and passing. I think it is also it interesting to note that <i><strong>I am not subscribed to any of these three subreddits</strong></i>.
         </p>
     </div>
 </div>
 <br/>
 <br/>
 <h2 id="the-tags">The Tags</h2>
-<p>I wanted to make almost the exact same analysis but this time with the tags. I wanted to see if there is any relationship between the tags and my activity. So, in order to test if there is any dependency between the tags and vote direction I have performed a <strong><em>Chi-Square Test</em></strong> with a significance level of <em>0.05</em> again to test the following hypotheses:
-<strong>Null Hypothesis:</strong> The tag and the type of my activity are independent.
+<p>I wanted to make almost the exact same analysis but this time with the tags. I wanted to see if there is any relationship between the tags and my activity. So, in order to test if there is any dependency between the tags and vote direction I have performed a <strong><em>Chi-Square Test</em></strong> with a significance level of <strong>0.05</strong> again to test the following hypotheses:<br>
+<strong>Null Hypothesis:</strong> The tag and the type of my activity are independent.<br>
 <strong>Alternative Hypothesis:</strong> The tag and the type of my activity are dependent.</p>
-<p>The following figure shows the distribution of the total number of <em>create</em> and <em>vote</em> interactions for each tag.</p>
-<div id="tags_figure" class="figure">
+<p style="margin-bottom: 0; margin-top: 1.5rem;">The following figure shows the distribution of the total number of <i>"create"</i> and <i>"vote"</i> interactions for each tag.</p>
+<div id="tags_figure" class="figure" style="margin-top: 0.25rem;">
     <figure>
         
         
@@ -377,7 +379,7 @@
     </figure>
 </div>
 <p>The test <strong>rejected</strong> the null hypothesis with a p-value of <strong><em>4.66E-6</em></strong> which means that the tag and the type of my activity are not independent. However, the test also showed that the effect size is very small with a Cramer&rsquo;s V of <strong><em>0.09</em></strong>. This means that the tag is not a good predictor of my activity type.<br>
-Again this result is highly affected by the huge difference between the number of <em>create</em> and <em>vote</em> interactions. So, I have also calculated the ratio of <em>vote</em> and total count for each tag. The following figure shows the result. Note that the figure is sorted by the total number of interactions.</p>
+Again this result is highly affected by the huge difference between the number of <em>&ldquo;create&rdquo;</em> and <em>&ldquo;vote&rdquo;</em> interactions. So, I have also calculated the ratio of <em>&ldquo;vote&rdquo;</em> and total count for each tag. The following figure shows the result. Note that the figure is sorted by the total number of interactions.</p>
 <div class="figure-grid-wrapper">
     <div id="tags_ratio_figure" class="figure">
         <figure>
@@ -433,14 +435,14 @@ Again this result is highly affected by the huge difference between the number o
     </div>
     <div class="figure-side-text">
         <p>
-            Also from this figure it is clear that for any tag I vote way more than I create, aroun 90%. This displays the effect of size difference for the previous test. Also compared to subreddits tags do not show any variation in the ratio. This might be because tags are more general and there only eight of them for every subreddit, so in aggragetion they tend to get more uniform towards the higher number of <i>voting</i> interaction.
+            Also from this figure it is clear that for any tag I vote way more than I create, around 90%. This displays the effect of size difference for the previous test. Also compared to subreddits tags do not show any variation in the ratio. This might be because tags are more general and there only eight of them for every subreddit, so in aggragetion they tend to get more uniform towards the higher number of <i>voting</i> interaction.
         </p>
     </div>
 </div>
 <br/>
 <br/>
 <h2 id="the-subscriptions">The Subscriptions</h2>
-<p>Lastly, I wanted to see if there is any significant difference between me voting or creating on a subreddit that I am not subscribed to. So, I have performed a <strong><em>Chi-Square Test</em></strong> with a significance level of <em>0.05</em> again to test the following hypotheses:
+<p>Lastly, I wanted to see if there is any significant difference between me voting or creating on a subreddit that I am not subscribed to. So, I have performed a <strong><em>Chi-Square Test</em></strong> with a significance level of <strong>0.05</strong> again to test the following hypotheses:
 <strong>Null Hypothesis:</strong> The subscription and the type of my activity are independent.
 <strong>Alternative Hypothesis:</strong> The subscription and the type of my activity are dependent.</p>
 <div id="subscriptions_figure" class="figure">
@@ -495,7 +497,7 @@ Again this result is highly affected by the huge difference between the number o
         <figcaption>Figure 4.5 - Created and Voted Counts by Subscriptions</figcaption>
     </figure>
 </div>
-<p>This time the test was <strong>not able to reject</strong> the null hypothesis. The resulting p-value was <strong><em>0.66</em></strong> which is way above the significance level. So, the test result says that the subscription and the type of my activity are independent. Considering the two previous tests, this result is not surprising, because the subscription is like even a more general version of the tag system with only two options.</p>
+<p>This time the test was <strong><em>not</em> able to reject</strong> the null hypothesis. The resulting p-value was <strong><em>0.66</em></strong> which is way above the significance level. So, the test result says that the subscription and the type of my activity are independent. Considering the two previous tests, this result is not surprising, because the subscription is like even a more general version of the tag system where there are only two options.</p>
 <div class="figure-grid-wrapper">
     <div id="subscriptions_ratio_figure" class="figure">
         <figure>
@@ -551,10 +553,10 @@ Again this result is highly affected by the huge difference between the number o
     </div>
     <div class="figure-side-text">
         <p>
-            However, along with the ratio figure which again shows 90% voting ratio, this test was the most surprising for me. For some reason I have expected that I would have a higher ratio of <i>creation</i> in the subreddits that I am not subscribed to because I would be more likely to ask questions or make comments in those subreddits while almost never vote since they are not on my feed. Since the test and figures contradicts my first thoughts, I have decided to think about my own behavior and try to find a reason for this result. I have come up with a possible reason.
+            However, along with the ratio figure which again shows 90% voting ratio, this test's results were the most surprising for me. For some reason I have expected that I would have a higher ratio of <i>"creation"</i> in the subreddits that I am not subscribed to because I would be more likely to ask questions or make comments in those subreddits while almost never vote since they are not on my feed. Since the test and figures contradicts my first thoughts, I have decided to think about my own behavior and try to find a reason for this result. I have come up with a possible reason.
         </p>
         <p>
-            There are actually some subreddits such as <a href="https://reddit.com/r/baldursgate3" target="_blank">r/BaldursGate3</a> that I was subscribed for considerable amount of time and interacted with a lot, but then I have unsubscribed from them. Since the data I have collected do not include any information on my past subscriptions, these type of subreddits are counted as <i>not subscribed</i> even though I have interacted with them a lot. This might be the reason for the result. 
+            There are actually some subreddits, such as <a href="https://reddit.com/r/baldursgate3" target="_blank">r/BaldursGate3</a>, that I was subscribed for considerable amount of time and interacted with a lot, but then at some point I lost interest and unsubscribed from them to clear my feed. Since the data I have collected do not include any information on my past subscriptions, these type of subreddits are counted as <i>not subscribed</i> even though there is a history of subsrciption and high interaction.
         </p>
     </div>
 </div>
