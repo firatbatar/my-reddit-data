@@ -184,12 +184,8 @@
         margin-left: 1rem;
         max-width: 40%;
     }
-
-    #total_figure {
-    }
 </style>
-<p>Reddit also provided a dataset of all the votes I&rsquo;ve made on posts and comments. This basically a like/dislike system, where I can upvote or downvote posts and comments. The data also included what I voted on, so I wanted to see if there was any pattern to my voting behavior.</p>
-<h2 id="the-total-score">The Total Score</h2>
+<p>Reddit also provided a dataset of all my votes including both the ones that are made on posts and comments. This is basically a like/dislike system, where I can upvote or downvote posts and comments. The data also included <em>what</em> I have voted on, so I wanted to see if there was any pattern to my voting behavior.</p>
 <div class="figure-grid-wrapper">
     <div id="total_figure" class="figure">
         <figure>
@@ -245,11 +241,12 @@
     </div>
     <div class="figure-side-text">
         <p>
-            When we look at the total number of votes I've made for each direction, we can see that I tend to almost never downvote which means that it would be hard to analyze and find any patterns directly from the number of votes. In order to tackle this problem, through <a href="https://www.reddit.com/dev/api/" target="_blank">Reddit API</a> I have collected the total score of each item I have voted on - which is the number of upvotes minus the number of downvotes. This way, I can instead form a hypothesis on the general popularity of the items I have voted on.
+            When we look at the total number of votes I've made in each direction, up and down, it can be see that I tend to <i>almost never downvote</i> which means that it would be hard to analyze and find any patterns directly from the number of my votes only. In order to tackle this problem, through <a href="https://www.reddit.com/dev/api/" target="_blank"><i><strong>Reddit API</strong></i></a> I have collected the total score of each item I have voted on, which is the number of upvotes minus the number of downvotes. This way, I can instead form a hypothesis on the general popularity of the items I have voted on.
         </p>
     </div>
 </div>
-<p>One analysis that comes to mind quickly is to see if I follow the general trend or in other words if I tend to upvote on more popular items while downvoting on less popular items. One way of looking into this is comparing the total score of the items I have upvoted and downvoted. The following figure shows the distribution of the total score of the items I have upvoted and downvoted. Note that data includes huge outliers and weird distributions due to the nature of Reddit with different subreddits, so I have used a log scale for the x-axis.</p>
+<h2 id="the-total-score">The Total Score</h2>
+<p>One analysis that comes to mind quickly is to see if I follow the general trend or in other words <strong>if I tend to upvote on more popular items while downvoting on less popular items</strong>. One way of looking into this is comparing the total score of the items I have upvoted and downvoted. The following figure shows the distribution of the total score of the items I have upvoted and downvoted. Note that data includes huge outliers and weird distributions due to the nature of Reddit with different subreddits that have different sizes, so I have used a log scale for the x-axis.</p>
 <div class="figure-grid-wrapper">
     <div id="upvote_figure" class="figure">
         <figure>
@@ -356,14 +353,14 @@
         </figure>
     </div>
 </div>
-<p>I have formed the hypotheses,<br>
+<p>I have formed the following hypotheses,<br>
 <strong>Null Hypothesis</strong>: My upvote or downvote is not corralated with the total score of the post or comment.<br>
-<strong>Alternative Hypothesis</strong>: I vote up on posts and comments that have a higher score and down on posts and comments that have a lower score.<br>
-Then I have performed a <strong><em>t-test</em></strong> with a significance level of 0.05 to see if I can reject the null hypothesis. However, the result p-value was a huge <strong>0.81</strong> which means that <strong>I cannot reject the null hypothesis.</strong></p>
-<p>However, this analysis is a bit problematic because still there is a huge difference between the amount of upvotes and downvotes I have made. Also, due to the nature of Reddit with different subreddits at different interactivity level and feed display algorithm the items that I have voted tends to stay in a certain range of total score.</p>
+<strong>Alternative Hypothesis</strong>: I vote up on posts and comments that have a higher score and down on posts and comments that have a lower score.</p>
+<p>Then I have performed a <strong><em>t-test</em></strong> against a significance level of 0.05 to see if I can reject the null hypothesis. However, the result p-value was a big number, <strong><em>0.81</em></strong>, which means that <strong>I cannot reject the null hypothesis.</strong></p>
+<p><em>However</em>, this test might be bit problematic because still there is a huge difference between the amount of upvotes and downvotes I have made. Also, due to the nature of Reddit with different subreddits at different interactivity level and popularity, and feed display algorithm the items that I have voted tends to stay in a certain range of total score.</p>
 <br/>
 <h2 id="the-tags">The Tags</h2>
-<p>Each item in Reddit belongs to a subreddit one way or another. So, technically I can analyze my voting behavior on each subreddit; however looking into each individual subreddit would be a bit meanlingless instead we can use the tags that are assigned to each subreddit via annotations. I wanted to see if there is any relationship between the tags and my voting behavior. So, in order to test if there is any dependency between the tags and vote direction I have performed a <strong><em>Chi-Square Test</em></strong> with a significance level of 0.05 using <a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.chi2_contingency.html"><strong><em>scipy.stats.chi2_contingency</em></strong></a>.</p>
+<p>Each item in Reddit belongs to a subreddit one way or another. So, technically I can analyze my voting behavior on each subreddit; however looking into each individual subreddit could be a bit messy for this particular instance, instead we can use the tags that are assigned to each subreddit via human annotations <em>(see <a href="https://firatbatar.com/my-reddit-data/about#data-source">about</a> for more details.)</em>. I wanted to see if there is any relationship between the tags and my voting behavior. So, in order to test if there is any dependency between the tags and vote direction I have performed a <strong><em>Chi-Square Test</em></strong> with a significance level of 0.05 using <a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.chi2_contingency.html"><em>scipy&rsquo;s chi2_contingency</em></a>.</p>
 <p>The following figure shows the distribution of the total number of upvotes and downvotes for each tag.</p>
 <div class="figure-grid-wrapper">
     <div id="tag_figure" class="figure">
@@ -420,11 +417,13 @@ Then I have performed a <strong><em>t-test</em></strong> with a significance lev
     </div>
     <div class="figure-side-text">
         <p>
-            The test <strong>rejected</strong> the null hypothesis with a p-value of <strong>8.3E-6</strong> which means that the tag and vote direction are not independent. However, the test also showed that the effect size is very small with a Cramer's V of <strong>0.09</strong>. This means that the tag is not a good predictor of my voting behavior.
-            <br/>
-            One possible reason for this result is might be again the huge difference between the number of upvotes and downvotes I have made. Also, the tags are assigned to subreddits and not to individual posts or comments. So, the tags might not be a good indicator of the content of the posts or comments I have voted on.
-            <br/>
-            However, a small direct look into the votes will show that I tend to downvote on posts and comments that are tagged as <i>game</i>. This might be the vast diversity of taste in the gaming community and people's tendency to enter into arguments about their tastes.
+            The test <strong>rejected</strong> the null hypothesis with a p-value of <strong>8.3E-6</strong> which means that the tag and vote direction are not independent. <i>However</i>, the test also showed that the effect size is very small with a Cramer's V of <strong>0.09</strong>. This means that the tag <i>might not a good predictor of my voting behavior</i>.
+        </p>
+        <p>
+            One possible reason for this result is might be again the difference between the number of upvotes and downvotes I have made. Also, the tags are assigned to subreddits and not to individual posts or comments. So, <i>the tags might be generalizing the content</i> of the posts or comments a bit too much, which uniformizes the voting behavior.
+        </p>
+        <p>
+            However, a small direct look into the votes will show that I <i>tend to downvote</i> on posts and comments that are tagged as <i>game</i>. One possible reason for this behavior might be the vast diversity of taste in the gaming community and people's tendency to enter into arguments and discussions about their and others' tastes which leads to downvotes.
         </p>
     </div>
 </div>
